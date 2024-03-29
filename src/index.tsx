@@ -1,15 +1,21 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-
+import { Provider as ReduxProvider } from "react-redux";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import ThemeProvider from "./theme";
+import { store } from "./redux/store";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
   <React.StrictMode>
-    <App />
+    <ReduxProvider store={store}>
+      <ThemeProvider>
+        <App />
+      </ThemeProvider>
+    </ReduxProvider>
   </React.StrictMode>
 );
 
