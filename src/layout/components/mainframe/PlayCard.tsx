@@ -53,8 +53,9 @@ const PlayCard = React.forwardRef(
           data-tip="play"
           data-for="tooltipMain"
           data-event="click"
+          style={{ color: "black" }}
         >
-          <PlayArrowIcon />
+          <PlayArrowIcon className="icon" />
         </button>
       </div>
     );
