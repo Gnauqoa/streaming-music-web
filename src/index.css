@@ -133,7 +133,7 @@ body {
   color: white;
 }
 
-.create-button > div > svg {
+.create-button > div > .icon {
   transition: all 0.4s;
 }
 
