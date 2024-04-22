@@ -1,6 +1,5 @@
 import { NavLink } from "react-router-dom";
 
-//Linked list items
 function ListItem({ name, id }: { name: string; id: string }) {
   return (
     <li className="side-list">

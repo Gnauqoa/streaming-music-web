@@ -1,15 +1,22 @@
+import { Route, Routes } from "react-router-dom";
+
 import HomePage from "../../HomePage";
+import SearchPage from "../../SearchPage";
 
 import { Tooltip } from "react-tooltip";
 import generateContent from "../../../utils/TipContent";
 import { useState } from "react";
 
-export default function PageContent() {
+export default function PageContent({ query }: { query: string }) {
   const [showTooltip, setShowTooltip] = useState(false);
 
   return (
     <>
-      <HomePage />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/search" element={<SearchPage query={query} />} />
+      </Routes>
+
       <Tooltip
         className="toolTip ttMain"
         id="tooltipMain"
