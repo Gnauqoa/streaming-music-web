@@ -8,7 +8,7 @@ export default function GenrePage() {
     {
       id: "1",
       type: "playlist",
-      to: "/playlists",
+      to: "/playlist/1",
       name: "Today's Top Hits",
       owner: { display_name: "Spotify" },
       description: "Taylor Swift is on top of the Hottest 50!",
@@ -21,7 +21,7 @@ export default function GenrePage() {
     {
       id: "2",
       type: "playlist",
-      to: "/playlists",
+      to: "/playlist/2",
       name: "Top 50 - Global",
       owner: { display_name: "Spotify" },
       description:
@@ -35,7 +35,7 @@ export default function GenrePage() {
     {
       id: "3",
       type: "playlist",
-      to: "/playlists",
+      to: "/playlist/3",
       name: "RapCaviar",
       owner: { display_name: "Spotify" },
       description:
@@ -49,7 +49,7 @@ export default function GenrePage() {
     {
       id: "4",
       type: "playlist",
-      to: "/playlists",
+      to: "/playlist/4",
       name: "Viva Latino",
       owner: { display_name: "Spotify" },
       description:
@@ -63,7 +63,7 @@ export default function GenrePage() {
     {
       id: "5",
       type: "playlist",
-      to: "/playlists",
+      to: "/playlist/5",
       name: "Rock Classics",
       owner: { display_name: "Spotify" },
       description:
@@ -77,7 +77,7 @@ export default function GenrePage() {
     {
       id: "6",
       type: "playlist",
-      to: "/playlists",
+      to: "/playlist/6",
       name: "All Out 2000s",
       owner: { display_name: "Spotify" },
       description: "The biggest songs of the 2000s. Cover: Kelly Clarkson",
@@ -90,7 +90,7 @@ export default function GenrePage() {
     {
       id: "7",
       type: "playlist",
-      to: "/playlists",
+      to: "/playlist/7",
       name: "Songs to Sing in the Car",
       owner: { display_name: "Spotify" },
       description: "Sing along and enjoy the drive",
@@ -103,7 +103,7 @@ export default function GenrePage() {
     {
       id: "8",
       type: "playlist",
-      to: "/playlists",
+      to: "/playlist/8",
       name: "All Out 80s",
       owner: { display_name: "Spotify" },
       description: "The biggest songs of the 1980s. Cover: Bonnie Tyler.",
@@ -116,7 +116,7 @@ export default function GenrePage() {
     {
       id: "9",
       type: "playlist",
-      to: "/playlists",
+      to: "/playlist/9",
       name: "Baila Reggaeton",
       owner: { display_name: "Spotify" },
       description:
@@ -130,7 +130,7 @@ export default function GenrePage() {
     {
       id: "10",
       type: "playlist",
-      to: "/playlists",
+      to: "/playlist/10",
       name: "Beast Mode",
       owner: { display_name: "Spotify" },
       description: "Get your beast mode on!",

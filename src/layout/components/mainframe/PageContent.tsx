@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import HomePage from "../../HomePage";
 import SearchPage from "../../SearchPage";
 import GenrePage from "../../GenrePage";
+import PlayListPage from "../../PlayListPage";
 
 import { Tooltip } from "react-tooltip";
 import generateContent from "../../../utils/TipContent";
@@ -17,6 +18,7 @@ export default function PageContent({ query }: { query: string }) {
         <Route path="/" element={<HomePage />} />
         <Route path="/search" element={<SearchPage query={query} />} />
         <Route path="/genre/:id" element={<GenrePage />} />
+        <Route path="/playlist/:id" element={<PlayListPage />} />
       </Routes>
 
       <Tooltip
