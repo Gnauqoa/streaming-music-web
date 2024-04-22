@@ -465,6 +465,10 @@ body {
   text-decoration: none;
 }
 
+.GenrePage {
+  padding-top: 16px;
+}
+
 .pageTitle {
   font-weight: 700;
   margin-top: 16px;
