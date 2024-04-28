@@ -539,6 +539,14 @@ body {
   letter-spacing: -0.04em;
 }
 
+.bannerTitleXL {
+  padding: 0.08em 0px;
+  font-size: 48px;
+  line-height: 60px;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+}
+
 .bannerDescription {
   color: hsla(0, 0%, 100%, 0.7);
   font-size: 14px;
@@ -556,11 +564,28 @@ body {
   margin-top: 8px;
 }
 
+.additionalInfo > a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
+.additionalInfo > a:hover {
+  text-decoration: underline;
+}
+
 .additionalInfo > h2 {
   color: hsla(0, 0%, 100%, 0.7);
   white-space: nowrap;
   font-size: 14px;
   font-weight: 500;
+}
+
+.additionalInfo :not(:first-child)::before {
+  content: "•";
+  margin: 0 4px;
+  display: inline-block;
 }
 
 .playListContent {
@@ -803,6 +828,13 @@ body {
   .bannerTitle {
     font-size: 96px;
     line-height: 96px;
+  }
+}
+
+@media (min-width: 1710px) {
+  .bannerTitleXL {
+    font-size: 72px;
+    line-height: 72px;
   }
 }
 

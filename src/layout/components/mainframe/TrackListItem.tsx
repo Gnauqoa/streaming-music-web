@@ -109,7 +109,7 @@ const TrackListItem = React.forwardRef(
                   <>
                     <span className="trackInfoSep">•</span>
                     <span className="trackAlbum ellipsis-one-line">
-                      <a href={`/ablum/${album.id}`}>{album.name}</a>
+                      <a href={`/album/${album.id}`}>{album.name}</a>
                     </span>
                   </>
                 )}
