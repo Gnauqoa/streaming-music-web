@@ -5,6 +5,7 @@ import SearchPage from "../../SearchPage";
 import GenrePage from "../../GenrePage";
 import PlayListPage from "../../PlayListPage";
 import AlbumPage from "../../AlbumPage";
+import UserPage from "../../UserPage";
 
 import { Tooltip } from "react-tooltip";
 import generateContent from "../../../utils/TipContent";
@@ -21,6 +22,7 @@ export default function PageContent({ query }: { query: string }) {
         <Route path="/genre/:id" element={<GenrePage />} />
         <Route path="/playlist/:id" element={<PlayListPage />} />
         <Route path="/album/:id" element={<AlbumPage />} />
+        <Route path="/user/:id" element={<UserPage />} />
       </Routes>
 
       <Tooltip

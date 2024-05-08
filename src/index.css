@@ -517,6 +517,10 @@ body {
   z-index: 3;
 }
 
+.circleDiv {
+  border-radius: 50%;
+}
+
 .bannerInfo {
   z-index: 1;
   display: flex;
@@ -615,6 +619,25 @@ body {
 
 .playListFunctions > :first-child {
   margin-right: 32px;
+}
+
+.followButton {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+  color: #fff;
+  background-color: transparent;
+  padding: 7px 15px;
+  border: 1px solid hsla(0, 0%, 100%, 0.3);
+  box-sizing: border-box;
+  border-radius: 4px;
+}
+
+.followButton:hover {
+  border-color: #fff;
 }
 
 .playButton {
