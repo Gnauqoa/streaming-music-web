@@ -1,14 +1,14 @@
 import { Route, Routes } from "react-router-dom";
 
-import HomePage from "../../HomePage";
-import SearchPage from "../../SearchPage";
-import GenrePage from "../../GenrePage";
-import PlayListPage from "../../PlayListPage";
-import AlbumPage from "../../AlbumPage";
-import UserPage from "../../UserPage";
+import HomePage from "../../layout/HomePage";
+import SearchPage from "../../layout/SearchPage";
+import GenrePage from "../../layout/GenrePage";
+import PlayListPage from "../../layout/PlayListPage";
+import AlbumPage from "../../layout/AlbumPage";
+import UserPage from "../../layout/UserPage";
 
 import { Tooltip } from "react-tooltip";
-import generateContent from "../../../utils/TipContent";
+import generateContent from "../../utils/TipContent";
 import { useState } from "react";
 
 export default function PageContent({ query }: { query: string }) {

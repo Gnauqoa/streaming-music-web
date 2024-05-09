@@ -1,4 +1,4 @@
-import SearchRow from "./components/mainframe/SearchRow";
+import SearchRow from "../components/mainframe/SearchRow";
 
 export default function QueryPage({ query }: { query: string }) {
   return (

@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-import PageTitle from "./components/mainframe/PageTitle";
-import PlayCard from "./components/mainframe/PlayCard";
+import PageTitle from "../components/mainframe/PageTitle";
+import PlayCard from "../components/mainframe/PlayCard";
 
 export default function GenrePage() {
   const [playLists, setPlayLists] = useState([

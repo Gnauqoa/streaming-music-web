@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-import PageBanner from "./components/mainframe/PageBanner";
-import PlayListFunctions from "./components/mainframe/PlayListFunctions";
-import TrackList from "./components/mainframe/TrackList";
+import PageBanner from "../components/mainframe/PageBanner";
+import PlayListFunctions from "../components/mainframe/PlayListFunctions";
+import TrackList from "../components/mainframe/TrackList";
 
 export default function PlayListPage() {
   const [bannerInfo, setbannerInfo] = useState({

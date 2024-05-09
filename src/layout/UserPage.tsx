@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-import PageBanner from "./components/mainframe/PageBanner";
-import PlayListFunctions from "./components/mainframe/PlayListFunctions";
-import CollectionRow from "./components/mainframe/CollectionRow";
+import PageBanner from "../components/mainframe/PageBanner";
+import PlayListFunctions from "../components/mainframe/PlayListFunctions";
+import CollectionRow from "../components/mainframe/CollectionRow";
 
 export default function UserPage() {
   const [bannerInfo, setbannerInfo] = useState({

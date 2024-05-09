@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useLocation } from "react-router-dom";
 
-import PageBanner from "./components/mainframe/PageBanner";
-import PlayListFunctions from "./components/mainframe/PlayListFunctions";
-import TrackList from "./components/mainframe/TrackList";
+import PageBanner from "../components/mainframe/PageBanner";
+import PlayListFunctions from "../components/mainframe/PlayListFunctions";
+import TrackList from "../components/mainframe/TrackList";
 
 export default function AlbumPage() {
   const highlight = useHighlight();

@@ -2,7 +2,7 @@ import React from "react";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import MusicNoteOutlinedIcon from "@mui/icons-material/MusicNoteOutlined";
 import LibraryMusicOutlinedIcon from "@mui/icons-material/LibraryMusicOutlined";
-import msTimeFormat from "../../../utils/utils";
+import msTimeFormat from "../../utils/utils";
 
 const TrackListItem = React.forwardRef(
   (

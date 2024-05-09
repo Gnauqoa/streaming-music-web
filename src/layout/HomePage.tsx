@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import CollectionRow from "./components/mainframe/CollectionRow";
+import CollectionRow from "../components/mainframe/CollectionRow";
 
 export default function HomePage() {
   const [playlistsMap, setplaylistMap] = useState({

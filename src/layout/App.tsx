@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-import Sidebar from "./components/sidebar/Sidebar";
-import MainFrame from "./components/mainframe/MainFrame";
+import Sidebar from "../components/sidebar/Sidebar";
+import MainFrame from "../components/mainframe/MainFrame";
 
 function App() {
   const [playlists, setPlaylists] = useState([

@@ -1,4 +1,4 @@
-import PromptButton from "../layout/components/mainframe/PromptButton";
+import PromptButton from "../components/mainframe/PromptButton";
 
 export default function generateContent(
   dataTip: string,

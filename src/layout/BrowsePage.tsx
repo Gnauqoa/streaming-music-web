@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-import BrowseCard from "./components/mainframe/BrowseCard";
-import PageTitle from "./components/mainframe/PageTitle";
+import BrowseCard from "../components/mainframe/BrowseCard";
+import PageTitle from "../components/mainframe/PageTitle";
 
 export default function BrowsePage() {
   const [genre, setGenre] = useState([

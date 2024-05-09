@@ -14,7 +14,7 @@ import HomeIcon from "@mui/icons-material/Home";
 import SearchIcon from "@mui/icons-material/Search";
 import LibraryMusicIcon from "@mui/icons-material/LibraryMusic";
 
-import generateContent from "../../../utils/TipContent";
+import generateContent from "../../utils/TipContent";
 
 function Sidebar({ playlists }: { playlists: any[] }) {
   const [showTooltip, setShowTooltip] = React.useState(false);
