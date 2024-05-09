@@ -36,7 +36,7 @@ const interceptors = {
   ],
   response: [
     async (response: AxiosResponse) => {
-      if ("/agents/users/sign_in" === response.config.url) {
+      if ("/user_api/users/users/sign_in" === response.config.url) {
         // console.log('response', response);
         saveToken(response.data?.data?.access_token);
       }
