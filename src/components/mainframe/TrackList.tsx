@@ -12,7 +12,7 @@ const TrackList = React.forwardRef(
       tracks: any[];
       styleName?: string;
       highlight?: string | null;
-      playContextTrack: (track: any) => void;
+      playContextTrack: Function;
     },
     ref
   ) => {

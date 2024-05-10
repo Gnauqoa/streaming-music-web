@@ -65,7 +65,7 @@ function TipContent({
 }: {
   title: string;
   tip: string;
-  setShowTooltip: (show: boolean) => void;
+  setShowTooltip: Function;
 }) {
   setShowTooltip(true);
 

@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 
 import HomePage from "../../layout/HomePage";
 import SearchPage from "../../layout/SearchPage";
@@ -6,6 +6,7 @@ import GenrePage from "../../layout/GenrePage";
 import PlayListPage from "../../layout/PlayListPage";
 import AlbumPage from "../../layout/AlbumPage";
 import UserPage from "../../layout/UserPage";
+import ArtistPage from "../../layout/ArtistPage";
 
 import { Tooltip } from "react-tooltip";
 import generateContent from "../../utils/TipContent";
@@ -23,6 +24,12 @@ export default function PageContent({ query }: { query: string }) {
         <Route path="/playlist/:id" element={<PlayListPage />} />
         <Route path="/album/:id" element={<AlbumPage />} />
         <Route path="/user/:id" element={<UserPage />} />
+        {/* Auto redirect */}
+        <Route
+          path="/artist/:id"
+          element={<Navigate to="overview" replace />}
+        />
+        <Route path="/artist/:id/*" element={<ArtistPage />} />
       </Routes>
 
       <Tooltip

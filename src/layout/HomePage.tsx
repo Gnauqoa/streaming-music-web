@@ -10,7 +10,7 @@ export default function HomePage() {
         {
           id: "playlist1-1",
           type: "track",
-          to: "/tracks",
+          to: "/tracks/1",
           name: "Kill Bill",
           artists: [{ name: "SZA" }],
           album: {
@@ -26,7 +26,7 @@ export default function HomePage() {
         {
           id: "playlist1-2",
           type: "track",
-          to: "/tracks",
+          to: "/tracks/1",
           name: "Safaera",
           artists: [
             { name: "Bad Bunny" },
@@ -46,7 +46,7 @@ export default function HomePage() {
         {
           id: "playlist1-3",
           type: "track",
-          to: "/tracks",
+          to: "/tracks/1",
           name: "Dynamite",
           artists: [{ name: "BTS" }],
           album: {
@@ -62,7 +62,7 @@ export default function HomePage() {
         {
           id: "playlist1-4",
           type: "track",
-          to: "/tracks",
+          to: "/tracks/1",
           name: "drivers license",
           artists: [{ name: "Olivia Rodrigo" }],
           album: {
@@ -78,7 +78,7 @@ export default function HomePage() {
         {
           id: "playlist1-5",
           type: "track",
-          to: "/tracks",
+          to: "/tracks/1",
           name: "Ella Baila Sola",
           artists: [{ name: "Eslabon Armado" }, { name: "Peso Pluma" }],
           album: {
@@ -99,7 +99,7 @@ export default function HomePage() {
         {
           id: "playlist2-1",
           type: "track",
-          to: "/tracks",
+          to: "/tracks/1",
           name: "Cruel Summer",
           artists: [{ name: "Taylor Swift" }],
           album: {
@@ -115,7 +115,7 @@ export default function HomePage() {
         {
           id: "playlist2-2",
           type: "track",
-          to: "/tracks",
+          to: "/tracks/1",
           name: "bad guy",
           artists: [{ name: "Billie Eilish" }],
           album: {
@@ -131,7 +131,7 @@ export default function HomePage() {
         {
           id: "playlist2-3",
           type: "track",
-          to: "/tracks",
+          to: "/tracks/1",
           name: "thank u, next",
           artists: [{ name: "Ariana Grande" }],
           album: {
@@ -147,7 +147,7 @@ export default function HomePage() {
         {
           id: "playlist2-4",
           type: "track",
-          to: "/tracks",
+          to: "/tracks/1",
           name: "I Like It",
           artists: [
             { name: "Cardi B" },
@@ -167,7 +167,7 @@ export default function HomePage() {
         {
           id: "playlist2-5",
           type: "track",
-          to: "/tracks",
+          to: "/tracks/1",
           name: "Spring Day",
           artists: [{ name: "BTS" }],
           album: {
@@ -183,7 +183,7 @@ export default function HomePage() {
         {
           id: "playlist2-6",
           type: "track",
-          to: "/tracks",
+          to: "/tracks/1",
           name: "Redbone",
           artists: [{ name: "Childish Gambino" }],
           album: {
@@ -199,7 +199,7 @@ export default function HomePage() {
         {
           id: "playlist2-7",
           type: "track",
-          to: "/tracks",
+          to: "/tracks/1",
           name: "Formation",
           artists: [{ name: "Beyoncé" }],
           album: {
@@ -215,7 +215,7 @@ export default function HomePage() {
         {
           id: "playlist2-8",
           type: "track",
-          to: "/tracks",
+          to: "/tracks/1",
           name: "Hotline Bling",
           artists: [{ name: "Drake" }],
           album: {
@@ -231,7 +231,7 @@ export default function HomePage() {
         {
           id: "playlist2-9",
           type: "track",
-          to: "/tracks",
+          to: "/tracks/1",
           name: "Alright",
           artists: [{ name: "Kendrick Lamar" }],
           album: {
@@ -247,7 +247,7 @@ export default function HomePage() {
         {
           id: "playlist2-10",
           type: "track",
-          to: "/tracks",
+          to: "/tracks/1",
           name: "Blank Space",
           artists: [{ name: "Taylor Swift" }],
           album: {
@@ -273,7 +273,7 @@ export default function HomePage() {
           playlists={[
             {
               id: "",
-              to: "/tracks",
+              to: "/tracks/1",
               description: "",
               name: "Liked Songs",
               images: [
