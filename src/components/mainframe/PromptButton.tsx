@@ -27,7 +27,7 @@ export default function PromptButton({
   to?: string;
   name: string;
   styleName: keyof typeof styles;
-  onClick?: () => void;
+  onClick?: React.MouseEventHandler;
 }) {
   return to ? (
     <Link to={to}>

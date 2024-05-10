@@ -22,7 +22,7 @@ export default function PlayListPage() {
     {
       id: "playlist2-1",
       type: "track",
-      to: "/tracks",
+      to: "/tracks/1",
       name: "Cruel Summer",
       artists: [{ name: "Taylor Swift" }],
       album: {
@@ -38,7 +38,7 @@ export default function PlayListPage() {
     {
       id: "playlist2-2",
       type: "track",
-      to: "/tracks",
+      to: "/tracks/1",
       name: "bad guy",
       artists: [{ name: "Billie Eilish" }],
       album: {
@@ -54,7 +54,7 @@ export default function PlayListPage() {
     {
       id: "playlist2-3",
       type: "track",
-      to: "/tracks",
+      to: "/tracks/1",
       name: "thank u, next",
       artists: [{ name: "Ariana Grande" }],
       album: {
@@ -70,7 +70,7 @@ export default function PlayListPage() {
     {
       id: "playlist2-4",
       type: "track",
-      to: "/tracks",
+      to: "/tracks/1",
       name: "I Like It",
       artists: [
         { name: "Cardi B" },
@@ -90,7 +90,7 @@ export default function PlayListPage() {
     {
       id: "playlist2-5",
       type: "track",
-      to: "/tracks",
+      to: "/tracks/1",
       name: "Spring Day",
       artists: [{ name: "BTS" }],
       album: {
@@ -106,7 +106,7 @@ export default function PlayListPage() {
     {
       id: "playlist2-6",
       type: "track",
-      to: "/tracks",
+      to: "/tracks/1",
       name: "Redbone",
       artists: [{ name: "Childish Gambino" }],
       album: {
@@ -122,7 +122,7 @@ export default function PlayListPage() {
     {
       id: "playlist2-7",
       type: "track",
-      to: "/tracks",
+      to: "/tracks/1",
       name: "Formation",
       artists: [{ name: "Beyoncé" }],
       album: {
@@ -138,7 +138,7 @@ export default function PlayListPage() {
     {
       id: "playlist2-8",
       type: "track",
-      to: "/tracks",
+      to: "/tracks/1",
       name: "Hotline Bling",
       artists: [{ name: "Drake" }],
       album: {
@@ -154,7 +154,7 @@ export default function PlayListPage() {
     {
       id: "playlist2-9",
       type: "track",
-      to: "/tracks",
+      to: "/tracks/1",
       name: "Alright",
       artists: [{ name: "Kendrick Lamar" }],
       album: {
@@ -170,7 +170,7 @@ export default function PlayListPage() {
     {
       id: "playlist2-10",
       type: "track",
-      to: "/tracks",
+      to: "/tracks/1",
       name: "Blank Space",
       artists: [{ name: "Taylor Swift" }],
       album: {

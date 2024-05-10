@@ -15,7 +15,7 @@ const TrackListItem = React.forwardRef(
       track: any;
       styleName?: string;
       highlight: boolean;
-      playContextTrack: (track: any) => void;
+      playContextTrack: Function;
     },
     ref
   ) => {

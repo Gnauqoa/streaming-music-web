@@ -7,8 +7,8 @@ export default function SearchBar({
   resetQuery,
 }: {
   query: string;
-  setQuery: (query: string) => void;
-  resetQuery: () => void;
+  setQuery: Function;
+  resetQuery: Function;
 }) {
   useEffect(() => {
     return () => resetQuery();

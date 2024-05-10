@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 
 import HomePage from "../../pages/HomePage";
 import SearchPage from "../../pages/SearchPage";
@@ -11,6 +11,7 @@ import { Tooltip } from "react-tooltip";
 import generateContent from "../../utils/TipContent";
 import { useState } from "react";
 import LoginPage from "../../pages/LoginPage";
+import ArtistPage from "../../layout/ArtistPage";
 
 export default function PageContent({ query }: { query: string }) {
   const [showTooltip, setShowTooltip] = useState(false);
@@ -25,6 +26,12 @@ export default function PageContent({ query }: { query: string }) {
         <Route path="/album/:id" element={<AlbumPage />} />
         <Route path="/user/:id" element={<UserPage />} />
         <Route path="/login" element={<LoginPage />} />
+        {/* Auto redirect */}
+        <Route
+          path="/artist/:id"
+          element={<Navigate to="overview" replace />}
+        />
+        <Route path="/artist/:id/*" element={<ArtistPage />} />
       </Routes>
 
       <Tooltip

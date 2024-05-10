@@ -712,6 +712,25 @@ body {
   width: 42px;
 }
 
+.trackItemThumb {
+  background-color: #282828;
+  color: #fff;
+  width: 50px;
+  height: 50px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  margin-right: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.trackMidAlign {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
 .itemIcon {
   padding-top: 3px;
   color: #fff;
@@ -833,6 +852,75 @@ body {
 
 .no-outline:focus {
   outline: none;
+}
+
+.menuNavList {
+  text-align: left;
+  list-style: none;
+}
+
+.AboutNavItem {
+  display: inline-block;
+}
+
+.aboutLink {
+  margin: 0 8px 0 0;
+  color: #fff;
+  position: relative;
+  display: inline-block;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+}
+
+.aboutLink-active {
+  background-color: #333;
+}
+
+.ArtistRowGrid {
+  display: grid;
+  grid-gap: 35px 16px;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-rows: 1fr;
+}
+
+.artistRowThumb {
+  background-color: #282828;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.artistRowThumb::after {
+  content: "";
+  display: block;
+  padding-bottom: 100%;
+}
+
+.artistRowName {
+  margin: 12px 0 4px;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+  display: block;
+}
+
+.artistRowName > a {
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.015em;
+  font-weight: 700;
+  color: #fff;
+  text-transform: none;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.artistRowName > a:hover {
+  text-decoration: underline;
 }
 
 @media (min-width: 1024px) {

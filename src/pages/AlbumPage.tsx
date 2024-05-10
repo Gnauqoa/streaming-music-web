@@ -46,7 +46,7 @@ export default function AlbumPage() {
     {
       id: "1",
       type: "track",
-      to: "/tracks",
+      to: "/tracks/1",
       name: "Every Single Night",
       artists: curArtist,
       album: curAlbum,
@@ -54,7 +54,7 @@ export default function AlbumPage() {
     {
       id: "2",
       type: "track",
-      to: "/tracks",
+      to: "/tracks/1",
       name: "Daredevil",
       artists: curArtist,
       album: curAlbum,
@@ -62,7 +62,7 @@ export default function AlbumPage() {
     {
       id: "3",
       type: "track",
-      to: "/tracks",
+      to: "/tracks/1",
       name: "Valentine",
       artists: curArtist,
       album: curAlbum,
@@ -70,7 +70,7 @@ export default function AlbumPage() {
     {
       id: "4",
       type: "track",
-      to: "/tracks",
+      to: "/tracks/1",
       name: "Jonathan",
       artists: curArtist,
       album: curAlbum,
@@ -78,7 +78,7 @@ export default function AlbumPage() {
     {
       id: "5",
       type: "track",
-      to: "/tracks",
+      to: "/tracks/1",
       name: "Left Alone",
       artists: curArtist,
       album: curAlbum,
@@ -86,7 +86,7 @@ export default function AlbumPage() {
     {
       id: "6",
       type: "track",
-      to: "/tracks",
+      to: "/tracks/1",
       name: "Werewolf",
       artists: curArtist,
       album: curAlbum,
@@ -94,7 +94,7 @@ export default function AlbumPage() {
     {
       id: "7",
       type: "track",
-      to: "/tracks",
+      to: "/tracks/1",
       name: "Periphery",
       artists: curArtist,
       album: curAlbum,
@@ -102,7 +102,7 @@ export default function AlbumPage() {
     {
       id: "8",
       type: "track",
-      to: "/tracks",
+      to: "/tracks/1",
       name: "Regret",
       artists: curArtist,
       album: curAlbum,
@@ -110,7 +110,7 @@ export default function AlbumPage() {
     {
       id: "9",
       type: "track",
-      to: "/tracks",
+      to: "/tracks/1",
       name: "Anything We Want",
       artists: curArtist,
       album: curAlbum,
@@ -118,7 +118,7 @@ export default function AlbumPage() {
     {
       id: "10",
       type: "track",
-      to: "/tracks",
+      to: "/tracks/1",
       name: "Hot Knife",
       artists: curArtist,
       album: curAlbum,
