@@ -2,7 +2,7 @@ import React from "react";
 
 import { Tooltip } from "react-tooltip";
 
-import Logo from "./Logo.png";
+import Logo from "../../assets/Logo.png";
 import NavList from "./NavList";
 import NavItem from "./NavItem";
 import PlayLists from "./PlayLists";
