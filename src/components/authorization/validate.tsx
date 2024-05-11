@@ -8,38 +8,38 @@ function checkPassword(Password: string) {
 }
 
 export default class Validator {
-  static validateUserName(value: string, [formErrors, setFormErrors]: any) {
+  static validateUserName(value: string, setFormErrors: any) {
     let valid = true;
     let errorMessage = "";
     if (!value) {
       errorMessage = "Please enter a username";
       valid = false;
     }
-    setFormErrors({ ...formErrors, userNameError: errorMessage });
+    setFormErrors({ userNameError: errorMessage });
     return valid;
   }
-  static validateDisplayName(value: string, [formErrors, setFormErrors]: any) {
+  static validateDisplayName(value: string, setFormErrors: any) {
     let valid = true;
     let errorMessage = "";
     if (!value) {
       errorMessage = "Please enter a Display Name";
       valid = false;
     }
-    setFormErrors({ ...formErrors, displayNameError: errorMessage });
+    setFormErrors({ displayNameError: errorMessage });
     return valid;
   }
-  static validateCountry(value: string, [formErrors, setFormErrors]: any) {
+  static validateCountry(value: string, setFormErrors: any) {
     let valid = true;
     let errorMessage = "";
     if (!value) {
       errorMessage = "Please select a Country";
       valid = false;
     }
-    setFormErrors({ ...formErrors, countryError: errorMessage });
+    setFormErrors({ countryError: errorMessage });
     return valid;
   }
 
-  static validateEmail(value: string, [formErrors, setFormErrors]: any) {
+  static validateEmail(value: string, setFormErrors: any) {
     let errorMessage = "";
     let valid = true;
 
@@ -51,11 +51,11 @@ export default class Validator {
       errorMessage = "Invalid email address";
       valid = false;
     }
-    setFormErrors({ ...formErrors, EmailError: errorMessage });
+    setFormErrors({ EmailError: errorMessage });
     return valid;
   }
 
-  static validatePassword(value: string, [formErrors, setFormErrors]: any) {
+  static validatePassword(value: string, setFormErrors: any) {
     let errorMessage = "";
     let valid = true;
 
@@ -73,38 +73,35 @@ export default class Validator {
         "Password must contain a letter and a number or special character";
       valid = false;
     }
-    setFormErrors({ ...formErrors, PasswordError: errorMessage });
+    setFormErrors({ PasswordError: errorMessage });
     return valid;
   }
 
-  static validateConfirmPassword(
-    value: string,
-    [formErrors, setFormErrors]: any
-  ) {
+  static validateConfirmPassword(value: string, setFormErrors: any) {
     let errorMessage = "";
     let valid = true;
     if (value !== setFormErrors.Password) {
       errorMessage = "Invalid, Passwords do not match";
       valid = false;
     }
-    setFormErrors({ ...formErrors, ConfirmPasswordError: errorMessage });
+    setFormErrors({ ConfirmPasswordError: errorMessage });
     return valid;
   }
-  static validateGender(selected: string, [formErrors, setFormErrors]: any) {
+  static validateGender(selected: string, setFormErrors: any) {
     let errorMessage = "";
     let valid = true;
     if (!selected) {
       errorMessage = "Please select your gender";
       valid = false;
     }
-    setFormErrors({ ...formErrors, GenderError: errorMessage });
+    setFormErrors({ GenderError: errorMessage });
     return valid;
   }
   static validateBirthdate(
     year: string,
     month: string,
     day: string,
-    [formErrors, setFormErrors]: any
+    setFormErrors: any
   ) {
     let errorMessage = "";
     let valid = true;
@@ -112,15 +109,15 @@ export default class Validator {
       errorMessage = "Please select your birth date";
       valid = false;
     }
-    setFormErrors({ ...formErrors, BirthdateError: errorMessage });
+    setFormErrors({ BirthdateError: errorMessage });
     return valid;
   }
 
-  static validateTerms(selected: boolean, [formErrors, setFormErrors]: any) {
+  static validateTerms(selected: boolean, setFormErrors: any) {
     let errorMessage = "";
     if (!selected) {
       errorMessage = "Please agree to the terms";
     }
-    setFormErrors({ ...formErrors, TermsError: errorMessage });
+    setFormErrors({ TermsError: errorMessage });
   }
 }
