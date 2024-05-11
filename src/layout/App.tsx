@@ -2,6 +2,8 @@ import { useState } from "react";
 
 import Sidebar from "../components/sidebar/Sidebar";
 import MainFrame from "../components/mainframe/MainFrame";
+import { Route, Routes } from "react-router-dom";
+import SignUpPage from "./SignUpPage";
 
 function App() {
   const [playlists, setPlaylists] = useState([
@@ -11,11 +13,19 @@ function App() {
   ]);
 
   return (
-    <div className="App">
-      <Sidebar playlists={playlists} />
+    <Routes>
+      <Route
+        path="/*"
+        element={
+          <div className="App">
+            <Sidebar playlists={playlists} />
 
-      <MainFrame />
-    </div>
+            <MainFrame />
+          </div>
+        }
+      />
+      <Route path="/signup" element={<SignUpPage />} />
+    </Routes>
   );
 }
 
