@@ -36,37 +36,43 @@ export default function SignUp() {
 
   const UsernameHandle = (event: React.ChangeEvent<HTMLInputElement>) => {
     setUsername(event.target.value);
-    Validator.validateUserName(event.target.value, setFormErrors);
+    Validator.validateUserName(event.target.value, [formErrors, setFormErrors]);
   };
   const DisplaynameHandle = (event: React.ChangeEvent<HTMLInputElement>) => {
     setDisplayName(event.target.value);
-    Validator.validateDisplayName(event.target.value, setFormErrors);
+    Validator.validateDisplayName(event.target.value, [
+      formErrors,
+      setFormErrors,
+    ]);
   };
   const EmailHandle = (event: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(event.target.value);
-    Validator.validateEmail(event.target.value, setFormErrors);
+    Validator.validateEmail(event.target.value, [formErrors, setFormErrors]);
   };
   const PasswordHandle = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(event.target.value);
-    Validator.validatePassword(event.target.value, setFormErrors);
+    Validator.validatePassword(event.target.value, [formErrors, setFormErrors]);
   };
   const ConfirmPasswordHandle = (
     event: React.ChangeEvent<HTMLInputElement>
   ) => {
     setConfirmPassword(event.target.value);
-    Validator.validateConfirmPassword(event.target.value, setFormErrors);
+    Validator.validateConfirmPassword(event.target.value, [
+      formErrors,
+      setFormErrors,
+    ]);
   };
   const genderHandle = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setGender(event.target.value);
-    Validator.validateGender(event.target.value, setFormErrors);
+    Validator.validateGender(event.target.value, [formErrors, setFormErrors]);
   };
   const countryHandle = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedCountry(event.target.value);
-    Validator.validateCountry(event.target.value, setFormErrors);
+    Validator.validateCountry(event.target.value, [formErrors, setFormErrors]);
   };
   const BirthdateHandle = (event: React.ChangeEvent<HTMLInputElement>) => {
     setBirthdate(event.target.value);
-    Validator.validateBirthdate(year, month, day, setFormErrors);
+    Validator.validateBirthdate(year, month, day, [formErrors, setFormErrors]);
   };
   const hasSamePassword = () => {
     if (password !== confirmPassword) {
@@ -77,14 +83,26 @@ export default function SignUp() {
   };
   const validateAll = () => {
     let value = true;
-    value &&= Validator.validateUserName(username, setFormErrors);
-    value &&= Validator.validateEmail(email, setFormErrors);
-    value &&= Validator.validatePassword(password, setFormErrors);
-    value &&= Validator.validateConfirmPassword(confirmPassword, setFormErrors);
-    value ||= Validator.validateGender(gender, setFormErrors);
-    value ||= Validator.validateBirthdate(year, month, day, setFormErrors);
-    value &&= Validator.validateDisplayName(displayName, setFormErrors);
-    value &&= Validator.validateCountry(selectedCountry, setFormErrors);
+    value &&= Validator.validateUserName(username, [formErrors, setFormErrors]);
+    value &&= Validator.validateEmail(email, [formErrors, setFormErrors]);
+    value &&= Validator.validatePassword(password, [formErrors, setFormErrors]);
+    value &&= Validator.validateConfirmPassword(confirmPassword, [
+      formErrors,
+      setFormErrors,
+    ]);
+    value ||= Validator.validateGender(gender, [formErrors, setFormErrors]);
+    value ||= Validator.validateBirthdate(year, month, day, [
+      formErrors,
+      setFormErrors,
+    ]);
+    value &&= Validator.validateDisplayName(displayName, [
+      formErrors,
+      setFormErrors,
+    ]);
+    value &&= Validator.validateCountry(selectedCountry, [
+      formErrors,
+      setFormErrors,
+    ]);
     return value;
   };
 
@@ -106,7 +124,7 @@ export default function SignUp() {
       usersType = "artist";
     }
 
-    let toSent = {
+    let toSend = {
       username: username,
       birthDate: birth,
       email: email,
@@ -117,7 +135,6 @@ export default function SignUp() {
       country: selectedCountry,
       gender: gen,
     };
-    console.log(toSent);
 
     let errorMessage = "";
     if (isVerified && hasSamePassword() === true && validateAll()) {
@@ -126,35 +143,31 @@ export default function SignUp() {
     setFormErrors({ ...formErrors, ConfirmPasswordError: errorMessage });
   };
 
-  const handleShowPassword = () => {
-    setPasswordType(PasswordType === "text" ? "Password" : "text");
+  const handleShowPassword = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    e.preventDefault();
+    setPasswordType(PasswordType === "text" ? "password" : "text");
     setShowText(showText === "show" ? "hide" : "show");
   };
-  const callback = () => {};
-  const verifyCallback = (action: any) => {
-    if (action) {
-      setIsVerified(true);
-    }
-  };
   const handleChange = (e: any) => {
-    let name = e.target.name;
-    switch (name) {
-      case "Username":
+    switch (e.target.name) {
+      case "username":
         setUsername(e.target.value);
         break;
-      case "DisplayName":
+      case "displayName":
         setDisplayName(e.target.value);
         break;
-      case "Email":
+      case "email":
         setEmail(e.target.value);
         break;
-      case "Password":
+      case "password":
         setPassword(e.target.value);
         break;
-      case "ConfirmPassword":
+      case "confirmPassword":
         setConfirmPassword(e.target.value);
         break;
-      case "Gender":
+      case "gender":
         setGender(e.target.value);
         break;
       case "selectedCountry":
@@ -199,7 +212,7 @@ export default function SignUp() {
       <div>
         <select
           className="FormElement  form-col custom-select"
-          defaultValue="selecteCountry"
+          defaultValue=""
           name="selectedCountry"
           onChange={(e) => {
             handleChange(e);
@@ -225,7 +238,7 @@ export default function SignUp() {
   function SignUp() {
     return (
       <React.Fragment>
-        <button type="submit" className="btn btn-block SignUpSubmit">
+        <button type="submit" className="SignUpSubmit">
           Sign Up
         </button>
         <section className="or-seperator-2 OR-2"></section>
@@ -233,12 +246,12 @@ export default function SignUp() {
           <h6 className="hint ">Already have an account? /</h6>
           <button
             type="button"
-            className="btn btn-block SignUpSubmit"
+            className="SignUpSubmit"
             onClick={() => {
               window.location.href = "/login";
             }}
           >
-            Log In
+            LOG IN
           </button>
         </section>
       </React.Fragment>
@@ -250,7 +263,7 @@ export default function SignUp() {
       <div>
         <select
           className="FormElement  form-col custom-select"
-          defaultValue="userType"
+          defaultValue=""
           name="userType"
           onChange={handleChange}
         >
@@ -282,7 +295,7 @@ export default function SignUp() {
         <select
           id="inputDay"
           className="FormElement  form-col custom-select"
-          defaultValue="Day"
+          defaultValue=""
           name="day"
           onChange={handleChange}
         >
@@ -316,7 +329,7 @@ export default function SignUp() {
         <select
           id="inputMonth"
           className="FormElement  form-col custom-select"
-          defaultValue="Month"
+          defaultValue=""
           name="month"
           onChange={handleChange}
         >
@@ -343,7 +356,7 @@ export default function SignUp() {
         <select
           id="inputYear"
           className="FormElement  form-col custom-select"
-          defaultValue="Year"
+          defaultValue=""
           name="year"
           onChange={handleChange}
         >
@@ -411,7 +424,7 @@ export default function SignUp() {
   function Password() {
     return (
       <div>
-        <div>
+        <div className="input-group">
           <input
             required
             type={PasswordType}
@@ -421,9 +434,12 @@ export default function SignUp() {
               handleChange(e);
               PasswordHandle(e);
             }}
-            name="Password"
+            name="password"
             value={password}
           />
+          <button className="showText " onClick={handleShowPassword}>
+            {showText}
+          </button>
         </div>
         {formErrors.PasswordError && (
           <span className="error">{formErrors.PasswordError}</span>
@@ -465,7 +481,7 @@ export default function SignUp() {
             handleChange(e);
             UsernameHandle(e);
           }}
-          name="name"
+          name="username"
         />
         <div>
           {formErrors.userNameError && (
@@ -488,7 +504,7 @@ export default function SignUp() {
             handleChange(e);
             DisplaynameHandle(e);
           }}
-          name="name"
+          name="displayName"
         />
         <div>
           {formErrors.displayNameError && (
