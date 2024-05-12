@@ -1,22 +1,20 @@
 import Logo from "../components/authorization/Logo";
 import SocialLogin from "../components/authorization/SocialLogin";
-import SignUp from "../components/authorization/SignUp";
+import LogIn from "../components/authorization/LogIn";
 import "../components/authorization/Authorization.css";
-// import { isLoggedIn } from "../utils/";
+// import { isLoggedIn } from "../../utils/";
 
-export default function SignUpPage() {
+export default function LogInPage() {
   // return isLoggedIn() ? (
   //   <Navigate to="/" replace />
   // ) : (
   return (
     <div>
-      <div>
-        <Logo />
-        <section>
-          <SocialLogin />
-          <SignUp />
-        </section>
-      </div>
+      <Logo />
+      <section>
+        <SocialLogin />
+        <LogIn />
+      </section>
     </div>
   );
 }
