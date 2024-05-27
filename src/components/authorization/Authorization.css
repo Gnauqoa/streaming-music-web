@@ -179,3 +179,18 @@ select.FormElement.form-col.custom-select {
   margin: 10px 0px;
   text-align: right;
 }
+
+.forgetPage {
+  margin-top: 100px;
+}
+
+.pass-reset {
+  color: #f9b835;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.pass-message {
+  padding-bottom: 30px;
+  line-height: inherit;
+}
