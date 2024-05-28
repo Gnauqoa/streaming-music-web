@@ -8,7 +8,8 @@ import { BrowserRouter as Router } from "react-router-dom";
 import App from "./layout/App";
 import "./index.css";
 import ToastContainer from "./config/toast";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
+import AuthProvider from "./config/auth";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -19,7 +20,9 @@ root.render(
       <ThemeProvider>
         <ToastContainer />
         <Router>
-          <App />
+          <AuthProvider>
+            <App />
+          </AuthProvider>
         </Router>
       </ThemeProvider>
     </ReduxProvider>

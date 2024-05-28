@@ -13,7 +13,7 @@ export const registerUser = (payload: AddUserType): Promise<AxiosResponse> => {
 };
 
 export const getCurrentUser = (): Promise<AxiosResponse> => {
-  return axios.get("/v1/users/current");
+  return axios.get("/api/v1/users/current");
 };
 export const updateProfile = (
   payload: UpdateUserPayload

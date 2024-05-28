@@ -7,7 +7,7 @@ import { getCurrentUser } from "../../apis/auth";
 // ----------------------------------------------------------------------
 
 const initialState: { user: UserType } & ReducerType = {
-  isLoading: false,
+  isLoading: true,
   error: null,
   user: null,
 };

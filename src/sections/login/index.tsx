@@ -6,9 +6,10 @@ import { signIn } from "../../apis/auth";
 import AuthTextField from "./AuthTextField";
 import { Box } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
-import { useEffect } from "react";
 import { toast } from "react-toastify";
 import { AxiosError } from "axios";
+import { useNavigate } from "react-router-dom";
+import { pathPage } from "../../routes/path";
 
 export type SignInFormProps = {
   account: string;
@@ -29,19 +30,16 @@ const Login = () => {
     defaultValues,
   });
 
-  const account = methods.watch("account");
-  useEffect(() => {
-    console.log(account);
-  }, [account]);
   const {
     handleSubmit,
     formState: { isSubmitting },
   } = methods;
-
+  const navigate = useNavigate();
   const onSubmit = async (data: SignInFormProps) => {
     try {
       await signIn(data);
       toast("Login success", { type: "success" });
+      navigate(pathPage.root);
     } catch (error) {
       const op = error as AxiosError;
       toast((op.response?.data as any)?.error?.errors[0], { type: "error" });
