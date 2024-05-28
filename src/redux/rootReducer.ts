@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-// slices
+import userReducer from "./slices/user";
 
 // ----------------------------------------------------------------------
 
@@ -27,6 +27,8 @@ const rootPersistConfig = {
   whitelist: [],
 };
 
-const rootReducer = combineReducers({});
+const rootReducer = combineReducers({
+  user: userReducer,
+});
 
 export { rootPersistConfig, rootReducer };
