@@ -61,6 +61,7 @@
     ]
   },
   "devDependencies": {
+    "@iconify/react": "^4.1.1",
     "@types/redux-persist": "^4.3.1"
   }
 }

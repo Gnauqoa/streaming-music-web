@@ -2,12 +2,14 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { FormProvider } from "../components/hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useSnackbar } from "notistack";
+import { signIn } from "../apis/auth";
 
-export type SignFormProps = {
+export type SignInFormProps = {
   account: string;
   password: string;
 };
-export const defaultValues: SignFormProps = {
+export const defaultValues: SignInFormProps = {
   account: "",
   password: "",
 };
@@ -16,7 +18,7 @@ export const LoginSchema = yup.object().shape({
   password: yup.string().required("Please enter your password"),
 });
 
-// const onSubmit = async (data: SignFormProps) => {
+// const onSubmit = async (data: SignInFormProps) => {
 //   try {
 //     await login(data.email, data.password);
 //   } catch (error) {
@@ -25,7 +27,8 @@ export const LoginSchema = yup.object().shape({
 // };
 
 const Login = () => {
-  const methods = useForm<SignFormProps>({
+  const enqueueSnackbar = useSnackbar();
+  const methods = useForm<SignInFormProps>({
     resolver: yupResolver(LoginSchema),
     defaultValues,
   });
@@ -35,8 +38,17 @@ const Login = () => {
     formState: { isSubmitting },
   } = methods;
 
+  const onSubmit = async (data: SignInFormProps) => {
+    try {
+      await signIn(data);
+      // enqueueSnackbar("Login success");
+    } catch (error) {
+      console.error(error);
+      // enqueueSnackbar("Login failed");
+    }
+  };
   return (
-    <FormProvider methods={methods}>
+    <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
       <></>
     </FormProvider>
   );

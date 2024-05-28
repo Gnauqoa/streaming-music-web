@@ -1,11 +1,11 @@
 import { Route, Routes } from "react-router-dom";
 
 import HomePage from "../../pages/HomePage";
-import SearchPage from "../../layout/SearchPage";
-import GenrePage from "../../layout/GenrePage";
-import PlayListPage from "../../layout/PlayListPage";
-import AlbumPage from "../../layout/AlbumPage";
-import UserPage from "../../layout/UserPage";
+import SearchPage from "../../pages/SearchPage";
+import GenrePage from "../../pages/GenrePage";
+import PlayListPage from "../../pages/PlayListPage";
+import AlbumPage from "../../pages/AlbumPage";
+import UserPage from "../../pages/UserPage";
 
 import { Tooltip } from "react-tooltip";
 import generateContent from "../../utils/TipContent";
