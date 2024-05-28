@@ -1,9 +1,12 @@
 import * as yup from "yup";
 import { useForm } from "react-hook-form";
-import { FormProvider } from "../components/hook-form";
+import { FormProvider } from "../../components/hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useSnackbar } from "notistack";
-import { signIn } from "../apis/auth";
+import { signIn } from "../../apis/auth";
+import AuthTextField from "./AuthTextField";
+import { Box } from "@mui/material";
+import { LoadingButton } from "@mui/lab";
+import { useEffect } from "react";
 
 export type SignInFormProps = {
   account: string;
@@ -18,21 +21,15 @@ export const LoginSchema = yup.object().shape({
   password: yup.string().required("Please enter your password"),
 });
 
-// const onSubmit = async (data: SignInFormProps) => {
-//   try {
-//     await login(data.email, data.password);
-//   } catch (error) {
-//     console.error(error);
-//   }
-// };
-
 const Login = () => {
-  const enqueueSnackbar = useSnackbar();
   const methods = useForm<SignInFormProps>({
     resolver: yupResolver(LoginSchema),
     defaultValues,
   });
-
+  const account = methods.watch("account");
+  useEffect(() => {
+    console.log(account);
+  }, [account]);
   const {
     handleSubmit,
     formState: { isSubmitting },
@@ -40,6 +37,7 @@ const Login = () => {
 
   const onSubmit = async (data: SignInFormProps) => {
     try {
+      console.log("login");
       await signIn(data);
       // enqueueSnackbar("Login success");
     } catch (error) {
@@ -49,7 +47,26 @@ const Login = () => {
   };
   return (
     <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
-      <></>
+      <Box sx={{ display: "flex", flexDirection: "column", gap: 6 }}>
+        <AuthTextField label={"Account"} placeholder={"Account"} name="account" />
+        <AuthTextField
+          label={"Password"}
+          name="password"
+          placeholder={"*************"}
+          type={"password"}
+        />
+
+        <LoadingButton
+          sx={{ backgroundColor: "primary.main" }}
+          fullWidth
+          size="large"
+          type="submit"
+          variant="contained"
+          loading={isSubmitting}
+        >
+          Login
+        </LoadingButton>
+      </Box>
     </FormProvider>
   );
 };

@@ -10,6 +10,7 @@ import UserPage from "../../pages/UserPage";
 import { Tooltip } from "react-tooltip";
 import generateContent from "../../utils/TipContent";
 import { useState } from "react";
+import LoginPage from "../../pages/LoginPage";
 
 export default function PageContent({ query }: { query: string }) {
   const [showTooltip, setShowTooltip] = useState(false);
@@ -23,6 +24,7 @@ export default function PageContent({ query }: { query: string }) {
         <Route path="/playlist/:id" element={<PlayListPage />} />
         <Route path="/album/:id" element={<AlbumPage />} />
         <Route path="/user/:id" element={<UserPage />} />
+        <Route path="/login" element={<LoginPage />} />
       </Routes>
 
       <Tooltip
