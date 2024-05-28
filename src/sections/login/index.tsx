@@ -7,6 +7,8 @@ import AuthTextField from "./AuthTextField";
 import { Box } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import { useEffect } from "react";
+import { toast } from "react-toastify";
+import { AxiosError } from "axios";
 
 export type SignInFormProps = {
   account: string;
@@ -26,6 +28,7 @@ const Login = () => {
     resolver: yupResolver(LoginSchema),
     defaultValues,
   });
+
   const account = methods.watch("account");
   useEffect(() => {
     console.log(account);
@@ -37,18 +40,21 @@ const Login = () => {
 
   const onSubmit = async (data: SignInFormProps) => {
     try {
-      console.log("login");
       await signIn(data);
-      // enqueueSnackbar("Login success");
+      toast("Login success", { type: "success" });
     } catch (error) {
-      console.error(error);
-      // enqueueSnackbar("Login failed");
+      const op = error as AxiosError;
+      toast((op.response?.data as any)?.error?.errors[0], { type: "error" });
     }
   };
   return (
     <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
       <Box sx={{ display: "flex", flexDirection: "column", gap: 6 }}>
-        <AuthTextField label={"Account"} placeholder={"Account"} name="account" />
+        <AuthTextField
+          label={"Account"}
+          placeholder={"Account"}
+          name="account"
+        />
         <AuthTextField
           label={"Password"}
           name="password"

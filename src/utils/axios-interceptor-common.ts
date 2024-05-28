@@ -1,3 +1,4 @@
+import { pathPage } from "../routes/path";
 import { getToken, saveToken } from "./local-storage";
 import { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
 
@@ -5,6 +6,7 @@ const interceptors = {
   request: [
     (config: AxiosRequestConfig) => {
       const token = getToken();
+      console.log("get token: ", token);
       if (token) {
         config = {
           ...config,
@@ -18,8 +20,8 @@ const interceptors = {
   response: [
     async (response: AxiosResponse) => {
       console.log("config url: ", response.config.url);
-      if ("/user_api/users/users/sign_in" === response.config.url) {
-        // console.log('response', response);
+      if ("/api/v1/users/sign_in" === response.config.url) {
+        console.log('response', response);
         saveToken(response.data?.data?.access_token);
       }
       return response;
@@ -28,7 +30,7 @@ const interceptors = {
   error: [
     (error: AxiosError) => {
       if (error.response?.status === 401) {
-        window.location.href = "/auth/login";
+        window.location.href = pathPage.login;
       }
       throw error;
     },
