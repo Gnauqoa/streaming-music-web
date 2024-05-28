@@ -5,7 +5,7 @@ import { getToken } from "./local-storage";
 axios.defaults.timeout = 90000; // 90s
 
 export const API_SERVER_URL =
-  process.env.API_SERVER_URL || "http://localhost:4000//user_api/users";
+  process.env.API_SERVER_URL || "http://localhost:4000/api/v1/users";
 
 axios.defaults.baseURL = API_SERVER_URL;
 
