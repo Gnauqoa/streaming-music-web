@@ -4,7 +4,7 @@ import { RHFTextField } from '../../components/hook-form';
 import Iconify from '../../components/Iconify';
 import { RFFTextFieldProps } from '../../components/hook-form/RHFTextField';
 
-const AuthTextField = ({ sx, label, type, ...props }: RFFTextFieldProps): JSX.Element => {
+const  AuthTextField = ({ sx, label, type, ...props }: RFFTextFieldProps): JSX.Element => {
   const [showPassword, setShowPassword] = useState(false);
   return (
     <div 
