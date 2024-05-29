@@ -1,4 +1,4 @@
-import Login from "../sections/login";
+import Login from "../sections/auth/login";
 
 const LoginPage = () => {
   return <Login />;
