@@ -1,5 +1,5 @@
 .NavBarStyle {
-  padding: 32px;
+  padding: 20px 50px;
   width: 100%;
   position: fixed;
   top: 0;
@@ -7,17 +7,17 @@
   z-index: 9999;
   width: 100%;
   color: black;
+  background-color: #121212;
 }
 
 .Logo {
   width: 150px;
+  height: 45px;
+  object-fit: cover;
+  display: block;
   left: 0;
   right: 0;
   align-items: center;
-}
-
-.barsection {
-  padding-bottom: 20px;
 }
 
 .SocialIconsPage {

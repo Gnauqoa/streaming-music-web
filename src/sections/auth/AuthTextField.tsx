@@ -7,9 +7,13 @@ import { RFFTextFieldProps } from '../../components/hook-form/RHFTextField';
 const  AuthTextField = ({ sx, label, type, ...props }: RFFTextFieldProps): JSX.Element => {
   const [showPassword, setShowPassword] = useState(false);
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+    <div 
+      style={{ 
+        marginBottom: 40,
+      }}
+    >
       {label && (
-        <Typography sx={{ fontSize: 12, fontWeight: 500, color: 'grey.DEACTIVE' }}>
+        <Typography sx={{ fontSize: 16, fontWeight: 500, color: 'white', marginBottom: '15px' }}>
           {label}
         </Typography>
       )}
@@ -34,15 +38,13 @@ const  AuthTextField = ({ sx, label, type, ...props }: RFFTextFieldProps): JSX.E
             borderWidth: 0,
             '& > input': {
               color: '#fff',
-              paddingLeft: 6,
-              paddingY: 4,
             },
           },
           ...sx,
         }}
         {...props}
       />
-    </Box>
+    </div>
   );
 };
 
