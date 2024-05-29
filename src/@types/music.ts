@@ -8,5 +8,5 @@ export type Music = {
   source_url: string;
   created_at: string;
   updated_at: string;
-  artists: Artist;
+  artists: Artist[];
 };

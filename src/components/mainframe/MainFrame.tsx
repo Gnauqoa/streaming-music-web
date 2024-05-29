@@ -11,25 +11,12 @@ import SearchBar from "./SearchBar";
 function MainFrame() {
   const [query, setQuery] = useState("");
 
-  const resetQuery = () => {
-    setQuery("");
-  };
-
   return (
     <div className="featured">
       <Headerbar>
         <HistoryNav />
         <Routes>
-          <Route
-            path="/search"
-            element={
-              <SearchBar
-                query={query}
-                setQuery={setQuery}
-                resetQuery={resetQuery}
-              />
-            }
-          />
+          <Route path="/search" element={<SearchBar />} />
         </Routes>
         <UserPrompt />
       </Headerbar>
