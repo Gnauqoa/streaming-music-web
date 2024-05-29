@@ -2,7 +2,7 @@ import { AxiosResponse } from "axios";
 import axios from "../utils/axios";
 
 import { AddUserType, UpdatePasswordPayload, UpdateUserPayload } from "../@types/user";
-import { SignInFormProps } from "../sections/login";
+import { SignInFormProps } from "../sections/auth/login";
 
 export const signIn = (payload: SignInFormProps): Promise<AxiosResponse> => {
   return axios.post("/api/v1/users/sign_in", payload);

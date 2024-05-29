@@ -1,7 +1,6 @@
 import Logo from "../components/authorization/Logo";
-
-import SignUp from "../components/authorization/SignUp";
 import "../components/authorization/Authorization.css";
+import Register from "../sections/auth/register";
 // import { isLoggedIn } from "../utils/";
 
 export default function SignUpPage() {
@@ -10,12 +9,8 @@ export default function SignUpPage() {
   // ) : (
   return (
     <div>
-      <div>
-        <Logo />
-        <section>
-          <SignUp />
-        </section>
-      </div>
+      <Logo />
+      <Register />
     </div>
   );
 }
