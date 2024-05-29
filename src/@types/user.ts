@@ -3,8 +3,6 @@ export type AddUserType = {
   first_name: string;
   last_name: string;
   password: string;
-  referral_code: string;
-  recaptcha_token?: string;
 };
 
 export type UserTypeNotNull = {
@@ -13,6 +11,7 @@ export type UserTypeNotNull = {
   email: string;
   first_name: string;
   last_name: string;
+  avatar_url: string;
   created_at: string;
   updated_at: string;
 };

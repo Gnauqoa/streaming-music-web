@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const styles = {
   dark: {
     backgroundColor: "transparent",
@@ -28,7 +30,7 @@ export default function PromptButton({
   onClick?: () => void;
 }) {
   return to ? (
-    <a href={to}>
+    <Link to={to}>
       <button
         className="PromptButton no-outline"
         name={name}
@@ -36,7 +38,7 @@ export default function PromptButton({
       >
         {name}
       </button>
-    </a>
+    </Link>
   ) : (
     <button
       className="PromptButton no-outline"

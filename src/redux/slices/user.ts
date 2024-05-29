@@ -51,6 +51,13 @@ export function getUserDetail() {
     try {
       const { data } = await getCurrentUser();
       dispatch(slice.actions.getUserDetailSuccess(data.data));
-    } catch (err) {}
+    } catch (err) {
+      dispatch(slice.actions.hasError(err));
+    }
+  };
+}
+export function setUser(user: UserType) {
+  return () => {
+    dispatch(slice.actions.setUserDetailSuccess(user));
   };
 }

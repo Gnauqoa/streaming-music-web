@@ -2,14 +2,16 @@ import * as yup from "yup";
 import { useForm } from "react-hook-form";
 import { FormProvider } from "../../components/hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { signIn } from "../../apis/auth";
+import { getCurrentUser, signIn } from "../../apis/auth";
 import AuthTextField from "./AuthTextField";
 import { Box } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import { toast } from "react-toastify";
-import { AxiosError } from "axios";
+import axios, { AxiosError } from "axios";
 import { useNavigate } from "react-router-dom";
 import { pathPage } from "../../routes/path";
+import { useDispatch } from "../../redux/store";
+import { getUserDetail, setUser } from "../../redux/slices/user";
 
 export type SignInFormProps = {
   account: string;
@@ -29,7 +31,7 @@ const Login = () => {
     resolver: yupResolver(LoginSchema),
     defaultValues,
   });
-
+  const dispatch = useDispatch();
   const {
     handleSubmit,
     formState: { isSubmitting },
@@ -37,7 +39,12 @@ const Login = () => {
   const navigate = useNavigate();
   const onSubmit = async (data: SignInFormProps) => {
     try {
-      await signIn(data);
+      const res = await signIn(data);
+      axios.defaults.headers.common[
+        "Authorization"
+      ] = `Bearer ${res.data.data.access_token}`;
+      const user = await axios.get("/api/v1/users/current");
+      dispatch(setUser(user.data.data));
       toast("Login success", { type: "success" });
       navigate(pathPage.root);
     } catch (error) {
