@@ -22,7 +22,17 @@ function Sidebar({ playlists }: { playlists: any[] }) {
   return (
     <>
       <div className="sidebar">
-        <img src={Logo} />
+        <img 
+          src={Logo} 
+          style={{
+            width: '150px',
+            objectFit: 'cover',
+            display: 'block',
+            padding: '25px 0',
+            margin: '0 auto',
+          }}
+          alt="Logo"
+        />
         <NavList>
           <NavItem to="/" icon={<HomeIcon className="icon" />} label="Home" />
           <NavItem

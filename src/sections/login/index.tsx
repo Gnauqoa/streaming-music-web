@@ -4,7 +4,6 @@ import { FormProvider } from "../../components/hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { signIn } from "../../apis/auth";
 import AuthTextField from "./AuthTextField";
-import { Box } from "@mui/material";
 import { LoadingButton } from "@mui/lab";
 import { toast } from "react-toastify";
 import { AxiosError } from "axios";
@@ -55,7 +54,16 @@ const Login = () => {
   };
   return (
     <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
-      <Box sx={{ display: "flex", flexDirection: "column", gap: 6 }}>
+      <div 
+        style={{ 
+          display: "flex", 
+          flexDirection: "column", 
+          margin: '150px auto 0',
+          padding: '35px 30px',
+          width: '750px',
+          backgroundColor: "#121212",
+        }}
+      >
         <AuthTextField
           label={"Account"}
           placeholder={"Account"}
@@ -69,7 +77,7 @@ const Login = () => {
         />
 
         <LoadingButton
-          sx={{ backgroundColor: "primary.main" }}
+          sx={{ backgroundColor: "primary.main", width: '350px', margin: '0 auto' }}
           fullWidth
           size="large"
           type="submit"
@@ -78,7 +86,7 @@ const Login = () => {
         >
           Login
         </LoadingButton>
-      </Box>
+      </div>
     </FormProvider>
   );
 };
