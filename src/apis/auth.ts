@@ -9,7 +9,7 @@ export const signIn = (payload: SignInFormProps): Promise<AxiosResponse> => {
 };
 
 export const registerUser = (payload: AddUserType): Promise<AxiosResponse> => {
-  return axios.post("/v1/users", payload);
+  return axios.post("/api/v1/users", payload);
 };
 
 export const getCurrentUser = (): Promise<AxiosResponse> => {
