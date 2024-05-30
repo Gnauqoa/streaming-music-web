@@ -3,16 +3,22 @@ import { Music } from "../../@types/music";
 import { formatDuration } from "../../utils/music";
 import useToggle from "../../hooks/useToggle";
 import { PlayArrow } from "@mui/icons-material";
+import useAudioControl from "../../hooks/useAudioControl";
+import PauseIcon from "@mui/icons-material/Pause";
 
 const MusicCardMini = ({ music }: { music: Music }) => {
   const { toggle: hover, onOpen: onHover, onClose: onLeave } = useToggle();
-
+  const { onPlaySong, currentMusic, isPlaying, onTogglePlay } =
+    useAudioControl();
+  const isCurrent = currentMusic?.id === music?.id;
   return (
     <div onMouseEnter={onHover} onMouseLeave={onLeave}>
       <Stack
         sx={{
+          backgroundColor: isCurrent ? "#535353" : "",
           p: 1,
-          borderRadius: 3,
+          pr: 3,
+          borderRadius: 1,
           gap: 3,
           flexDirection: "row",
           alignItems: "center",
@@ -32,8 +38,18 @@ const MusicCardMini = ({ music }: { music: Music }) => {
               transition: "opacity 0.3s",
             }}
           >
-            <IconButton>
-              <PlayArrow sx={{ color: "#fff" }} />
+            <IconButton
+              onClick={() => (isCurrent ? onTogglePlay() : onPlaySong(music))}
+            >
+              {isCurrent ? (
+                isPlaying ? (
+                  <PauseIcon sx={{ color: "#fff" }} />
+                ) : (
+                  <PlayArrow sx={{ color: "#fff" }} />
+                )
+              ) : (
+                <PauseIcon sx={{ color: "#fff" }} />
+              )}
             </IconButton>
           </Stack>
 

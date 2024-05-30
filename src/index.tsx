@@ -10,6 +10,8 @@ import "./index.css";
 import ToastContainer from "./config/toast";
 import "react-toastify/dist/ReactToastify.css";
 import AuthProvider from "./config/auth";
+import { AudioContextProvider } from "./context/audio";
+import Player from "./components/player";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
@@ -17,14 +19,16 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <ReduxProvider store={store}>
-      <ThemeProvider>
-        <ToastContainer />
-        <Router>
-          <AuthProvider>
-            <App />
-          </AuthProvider>
-        </Router>
-      </ThemeProvider>
+      <AudioContextProvider>
+        <ThemeProvider>
+          <ToastContainer />
+          <Router>
+            <AuthProvider>
+              <App />
+            </AuthProvider>
+          </Router>
+        </ThemeProvider>
+      </AudioContextProvider>
     </ReduxProvider>
   </React.StrictMode>
 );
