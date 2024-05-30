@@ -2,6 +2,7 @@ import { IconButton, Stack, Typography } from "@mui/material";
 import { Music } from "../../@types/music";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import useToggle from "../../hooks/useToggle";
+
 const MusicCard = ({ music }: { music: Music }) => {
   const { toggle: hover, onOpen: onHover, onClose: onLeave } = useToggle();
   return (
