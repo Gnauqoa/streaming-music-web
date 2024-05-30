@@ -48,7 +48,7 @@ const MusicCardMini = ({ music }: { music: Music }) => {
                   <PlayArrow sx={{ color: "#fff" }} />
                 )
               ) : (
-                <PauseIcon sx={{ color: "#fff" }} />
+                <PlayArrow sx={{ color: "#fff" }} />
               )}
             </IconButton>
           </Stack>

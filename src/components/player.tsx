@@ -53,8 +53,19 @@ const Player = () => {
   if (!open || !currentMusic) return <></>;
 
   return (
-    <div className="absolute bottom-0 flex flex-row items-center gap-2 bg-black p-2 w-[99%]">
-      <Stack flexDirection={"row"} gap={4} py={1}alignItems={"center"} width={"100%"}>
+    <div
+      style={{
+        width: "calc(100vw - 232px)",
+      }}
+      className="fixed z-20 bottom-0 flex flex-row items-center gap-2 bg-black p-2"
+    >
+      <Stack
+        flexDirection={"row"}
+        gap={4}
+        py={1}
+        alignItems={"center"}
+        width={"100%"}
+      >
         <Box sx={{ width: 56, height: 56, borderRadius: 4 }}>
           <img src={currentMusic.image_url} alt="" className=" object-cover" />
         </Box>
@@ -64,7 +75,7 @@ const Player = () => {
             {currentMusic.name.length > 15 && "..."}
           </Typography>
           <Typography sx={{ fontSize: 12, color: "#b3b3b3" }}>
-            {currentMusic.artists[0].name}
+            {currentMusic.artists ? currentMusic.artists[0].name : ""}
           </Typography>
         </Stack>
       </Stack>
@@ -118,7 +129,7 @@ const Player = () => {
         </Stack>
       </Stack>
 
-      <Stack sx={{ width: 200, flexDirection: "row", gap: 2 }}>
+      <Stack sx={{ width: 200, flexDirection: "row", gap: 2, mr: 2 }}>
         <VolumeUpIcon />
         <CustomSlider
           value={volume * 100}

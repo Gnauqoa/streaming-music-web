@@ -29,7 +29,8 @@ export const AudioContextProvider = ({ children }: { children: ReactNode }) => {
         ...state.slice(findResult),
         music,
       ]);
-    else setPlaylist((state) => [...state, music]);
+    else 
+    setPlaylist((state) => [...state, music]);
     setIndex(playlist.length);
     setOpen(true);
   };

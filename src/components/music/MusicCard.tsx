@@ -44,7 +44,7 @@ const MusicCard = ({ music }: { music: Music }) => {
               <PlayArrow sx={{ width: 32, height: 32, color: "#fff" }} />
             )
           ) : (
-            <PauseIcon sx={{ width: 32, height: 32, color: "#fff" }} />
+            <PlayArrow sx={{ width: 32, height: 32, color: "#fff" }} />
           )}
         </IconButton>
 

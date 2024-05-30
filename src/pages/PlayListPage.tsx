@@ -52,8 +52,11 @@ export default function PlayListPage() {
         />
         <PlayListFunctions follow={playlist.liked} />
         <div className="flex flex-col px-8">
-          {playlist.musics.map((music) => (
-            <PlaylistMusicCard music={music} key={music.id} />
+          {playlist.musics.map((music, index) => (
+            <PlaylistMusicCard
+              music={{ ...music, index: index + 1 }}
+              key={music.id}
+            />
           ))}
         </div>
       </div>

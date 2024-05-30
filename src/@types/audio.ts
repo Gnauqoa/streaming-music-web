@@ -17,5 +17,5 @@ export type AudioContextType = {
   currentTime: number;
   duration: number;
   isPlaying: boolean;
-  currentMusic: Music;
+  currentMusic: Music | null;
 };
