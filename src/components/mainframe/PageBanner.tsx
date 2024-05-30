@@ -14,13 +14,11 @@ export default function PageBanner({
     user,
     following,
     primary_color,
-    images,
+    image_url,
     release_date,
     total,
   } = bannerInfo;
   let formattedLikes;
-  let imgUrl;
-  if (images && images.length > 0) imgUrl = images[0].url;
 
   if (following) formattedLikes = following.total.toLocaleString("en-US");
 
@@ -32,16 +30,18 @@ export default function PageBanner({
         height: pageTitle === "artist" ? "40vh" : "30vh",
       }}
     >
-      <div style={{ display: 'flex', alignItems: 'center' }}>
+      <div style={{ display: "flex", alignItems: "center" }}>
         <div
           className={`bannerImgDiv ${
-            pageTitle === "profile" || pageTitle === "artist" ? "circleDiv" : null
+            pageTitle === "profile" || pageTitle === "artist"
+              ? "circleDiv"
+              : null
           }`}
         >
-          {imgUrl ? (
+          {image_url ? (
             <img
               loading="lazy"
-              src={imgUrl}
+              src={image_url}
               className={`bannerImg ${
                 pageTitle === "profile" || pageTitle === "artist"
                   ? "circleDiv"
@@ -83,7 +83,9 @@ export default function PageBanner({
                   index: number
                 ) => (
                   <a key={index} href={`/${person.type}/${person.id}`}>
-                    {person.type === "artist" ? person.name : person.display_name}
+                    {person.type === "artist"
+                      ? person.name
+                      : person.display_name}
                   </a>
                 )
               )}
