@@ -63,7 +63,7 @@ const AboutMenu = ({
               </>
             }
           />
-          <Route path={`related`} element={<RowGrid playlists={related} />} />
+          <Route path={`related`} element={<RowGrid data={related} />} />
         </Routes>
       </div>
     </>

@@ -10,7 +10,7 @@ const CollectionRow = React.forwardRef(
     return (
       <div className="CollectionRow">
         <RowTitle title={name} id={id} />
-        <RowGrid ref={ref} playlists={playlists} />
+        <RowGrid ref={ref} data={playlists} />
       </div>
     );
   }

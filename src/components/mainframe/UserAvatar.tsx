@@ -9,18 +9,28 @@ import {
   MenuItem,
 } from "@mui/material";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
+import { pathPage } from "../../routes/path";
 
 const UserAvatar = () => {
   const { user, isAuth, logout } = useAuth();
+  const navigate = useNavigate()
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
+  
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
+
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const handleProfileClick = () => {
+    setAnchorEl(null);
+    navigate('/user/1')
+  }
 
   if (!isAuth) return <></>;
   return (
@@ -61,7 +71,7 @@ const UserAvatar = () => {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={handleProfileClick}>
           <Avatar /> Profile
         </MenuItem>
         <MenuItem onClick={handleClose}>

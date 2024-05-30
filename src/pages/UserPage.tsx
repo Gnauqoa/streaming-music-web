@@ -3,27 +3,31 @@ import { useState } from "react";
 import PageBanner from "../components/mainframe/PageBanner";
 import PlayListFunctions from "../components/mainframe/PlayListFunctions";
 import CollectionRow from "../components/mainframe/CollectionRow";
+import { useSelector } from "../redux/store";
+import RowGrid from "../components/mainframe/RowGrid";
+import ArtistRowTitle from "../components/mainframe/ArtistRowTitle";
+import RowTitle from "../components/mainframe/RowTitle";
 
 export default function UserPage() {
+  const { user } = useSelector((state) => state.user);
+  console.log(user);
+
   const [bannerInfo, setbannerInfo] = useState({
-    name: "mennovanvoorst",
-    description: "",
-    user: [],
-    followers: { total: 49 },
+    name: `${user?.first_name} ${user?.last_name}`,
+    following: { total: 10 },
     primary_color: "rgb(83, 83, 83)",
     images: [
       {
-        url: "https://i.scdn.co/image/ab67616d00001e02a18843206ad1d8a98d1487ef",
+        url: user?.avatar_url,
       },
     ],
-    total: 11,
   });
 
-  const [playLists, setPlayLists] = useState([
+  const [artistsFollowed, setArtistsFollowed] = useState([
     {
       id: "1",
-      type: "playlist",
-      to: "/playlist/1",
+      type: "artist",
+      to: "/artist/1",
       name: "Today's Top Hits",
       owner: { display_name: "Spotify" },
       description: "Taylor Swift is on top of the Hottest 50!",
@@ -35,8 +39,8 @@ export default function UserPage() {
     },
     {
       id: "2",
-      type: "playlist",
-      to: "/playlist/2",
+      type: "artist",
+      to: "/artist/2",
       name: "Top 50 - Global",
       owner: { display_name: "Spotify" },
       description:
@@ -49,8 +53,8 @@ export default function UserPage() {
     },
     {
       id: "3",
-      type: "playlist",
-      to: "/playlist/3",
+      type: "artist",
+      to: "/artist/3",
       name: "RapCaviar",
       owner: { display_name: "Spotify" },
       description:
@@ -63,8 +67,8 @@ export default function UserPage() {
     },
     {
       id: "4",
-      type: "playlist",
-      to: "/playlist/4",
+      type: "artist",
+      to: "/artist/4",
       name: "Viva Latino",
       owner: { display_name: "Spotify" },
       description:
@@ -77,8 +81,8 @@ export default function UserPage() {
     },
     {
       id: "5",
-      type: "playlist",
-      to: "/playlist/5",
+      type: "artist",
+      to: "/artist/5",
       name: "Rock Classics",
       owner: { display_name: "Spotify" },
       description:
@@ -91,8 +95,8 @@ export default function UserPage() {
     },
     {
       id: "6",
-      type: "playlist",
-      to: "/playlist/6",
+      type: "artist",
+      to: "/artist/6",
       name: "All Out 2000s",
       owner: { display_name: "Spotify" },
       description: "The biggest songs of the 2000s. Cover: Kelly Clarkson",
@@ -104,8 +108,8 @@ export default function UserPage() {
     },
     {
       id: "7",
-      type: "playlist",
-      to: "/playlist/7",
+      type: "artist",
+      to: "/artist/7",
       name: "Songs to Sing in the Car",
       owner: { display_name: "Spotify" },
       description: "Sing along and enjoy the drive",
@@ -117,8 +121,8 @@ export default function UserPage() {
     },
     {
       id: "8",
-      type: "playlist",
-      to: "/playlist/8",
+      type: "artist",
+      to: "/artist/8",
       name: "All Out 80s",
       owner: { display_name: "Spotify" },
       description: "The biggest songs of the 1980s. Cover: Bonnie Tyler.",
@@ -130,8 +134,8 @@ export default function UserPage() {
     },
     {
       id: "9",
-      type: "playlist",
-      to: "/playlist/9",
+      type: "artist",
+      to: "/artist/9",
       name: "Baila Reggaeton",
       owner: { display_name: "Spotify" },
       description:
@@ -144,8 +148,8 @@ export default function UserPage() {
     },
     {
       id: "10",
-      type: "playlist",
-      to: "/playlist/10",
+      type: "artist",
+      to: "/artist/10",
       name: "Beast Mode",
       owner: { display_name: "Spotify" },
       description: "Get your beast mode on!",
@@ -161,7 +165,7 @@ export default function UserPage() {
   return (
     <div
       className="listPage"
-      style={{ display: playLists.length === 0 ? "none" : "block" }}
+      style={{ display: artistsFollowed.length === 0 ? "none" : "block" }}
     >
       <PageBanner pageTitle="profile" bannerInfo={bannerInfo} />
       <div className="playListContent">
@@ -169,13 +173,13 @@ export default function UserPage() {
           className="playListOverlay"
           style={{ backgroundColor: `${bannerInfo.primary_color}` }}
         ></div>
-        <PlayListFunctions type={"user"} follow={follow} />
+        <PlayListFunctions type={"none"} follow={follow} />
         <div className="page-content" style={{ marginTop: "40px" }}>
           <CollectionRow
             ref={null}
-            name="Public Playlists"
+            name="Following"
             id={""}
-            playlists={playLists}
+            playlists={artistsFollowed}
           />
         </div>
       </div>

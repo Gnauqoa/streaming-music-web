@@ -6,12 +6,12 @@ import GenrePage from "../../pages/GenrePage";
 import PlayListPage from "../../pages/PlayListPage";
 import AlbumPage from "../../pages/AlbumPage";
 import UserPage from "../../pages/UserPage";
+import LoginPage from "../../pages/LoginPage";
+import ArtistPage from "../../pages/ArtistPage";
 
 import { Tooltip } from "react-tooltip";
 import generateContent from "../../utils/TipContent";
 import { useState } from "react";
-import LoginPage from "../../pages/LoginPage";
-import ArtistPage from "../../layout/ArtistPage";
 
 export default function PageContent({ query }: { query: string }) {
   const [showTooltip, setShowTooltip] = useState(false);
