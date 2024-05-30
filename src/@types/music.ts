@@ -9,5 +9,6 @@ export type Music = {
   created_at: string;
   updated_at: string;
   image_url: string;
+  duration_ms: number;
   artists: Artist[];
 };
