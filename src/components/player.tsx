@@ -46,7 +46,6 @@ const Player = () => {
     onNext,
     onPrev,
     isPlaying,
-    setOpen,
     volume,
     setVolume,
     currentMusic,
@@ -54,8 +53,8 @@ const Player = () => {
   if (!open || !currentMusic) return <></>;
 
   return (
-    <div className="absolute bottom-0 flex flex-row items-center gap-2 bg-black p-2 w-[95%]">
-      <Stack flexDirection={"row"} gap={4} alignItems={"center"} width={"100%"}>
+    <div className="absolute bottom-0 flex flex-row items-center gap-2 bg-black p-2 w-[99%]">
+      <Stack flexDirection={"row"} gap={4} py={1}alignItems={"center"} width={"100%"}>
         <Box sx={{ width: 56, height: 56, borderRadius: 4 }}>
           <img src={currentMusic.image_url} alt="" className=" object-cover" />
         </Box>
