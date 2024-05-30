@@ -1,26 +1,26 @@
 import React from "react";
 import PlayCard from "./PlayCard";
 
-const RowGrid = React.forwardRef(({ playlists }: { playlists: any[] }, ref) => {
+const RowGrid = React.forwardRef(({ data }: { data: any[] }, ref) => {
   return (
     <div className="RowGrid">
-      {playlists.map((playlist, index) => {
-        if (playlist) {
-          if (index + 1 < playlist.length)
+      {data.map((item, index) => {
+        if (item) {
+          if (index + 1 < item.length)
             return (
               <PlayCard
-                key={playlist.id}
-                info={playlist}
-                type={playlist.type}
+                key={item.id}
+                info={item}
+                type={item.type}
               />
             );
           else
             return (
               <PlayCard
                 ref={ref}
-                key={playlist.id}
-                info={playlist}
-                type={playlist.type}
+                key={item.id}
+                info={item}
+                type={item.type}
               />
             );
         } else return null;
