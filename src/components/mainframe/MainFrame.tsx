@@ -7,6 +7,7 @@ import PageContent from "./PageContent";
 import HistoryNav from "./HistoryNav";
 import UserPrompt from "./UserPrompt";
 import SearchBar from "./SearchBar";
+import Player from "../player";
 
 function MainFrame() {
   const [query, setQuery] = useState("");
@@ -20,7 +21,7 @@ function MainFrame() {
         </Routes>
         <UserPrompt />
       </Headerbar>
-
+      <Player />
       <PageContent query={query} />
     </div>
   );

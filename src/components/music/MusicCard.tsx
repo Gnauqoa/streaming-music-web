@@ -1,10 +1,15 @@
 import { IconButton, Stack, Typography } from "@mui/material";
 import { Music } from "../../@types/music";
-import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import useToggle from "../../hooks/useToggle";
+import { PlayArrow } from "@mui/icons-material";
+import useAudioControl from "../../hooks/useAudioControl";
+import PauseIcon from "@mui/icons-material/Pause";
 
 const MusicCard = ({ music }: { music: Music }) => {
   const { toggle: hover, onOpen: onHover, onClose: onLeave } = useToggle();
+  const { onPlaySong, isPlaying, currentMusic, onTogglePlay } =
+    useAudioControl();
+  const isCurrent = music?.id === currentMusic?.id;
   return (
     <div onMouseEnter={onHover} onMouseLeave={onLeave}>
       <Stack
@@ -18,6 +23,7 @@ const MusicCard = ({ music }: { music: Music }) => {
         }}
       >
         <IconButton
+          onClick={() => (isCurrent ? onTogglePlay() : onPlaySong(music))}
           sx={{
             backgroundColor: "primary.main",
             ":hover": {
@@ -31,7 +37,15 @@ const MusicCard = ({ music }: { music: Music }) => {
             transition: "bottom 0.3s, right 0.3s, opacity 0.3s",
           }}
         >
-          <PlayArrowIcon sx={{ width: 32, height: 32 }} />
+          {isCurrent ? (
+            isPlaying ? (
+              <PauseIcon sx={{ width: 32, height: 32, color: "#fff" }} />
+            ) : (
+              <PlayArrow sx={{ width: 32, height: 32, color: "#fff" }} />
+            )
+          ) : (
+            <PauseIcon sx={{ width: 32, height: 32, color: "#fff" }} />
+          )}
         </IconButton>
 
         <Stack sx={{ maxWidth: 150, maxHeight: 150 }}>
