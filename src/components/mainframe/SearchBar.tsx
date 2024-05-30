@@ -1,20 +1,19 @@
 import React, { useEffect } from "react";
 import SearchIcon from "@mui/icons-material/Search";
+import { useSearchParams } from "react-router-dom";
 
-export default function SearchBar({
-  query,
-  setQuery,
-  resetQuery,
-}: {
-  query: string;
-  setQuery: Function;
-  resetQuery: Function;
-}) {
+export default function SearchBar() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [currentQuery, setCurrentQuery] = React.useState("");
+  const query = searchParams.get("query") || "";
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      setSearchParams({ query: currentQuery });
+    }
+  };
   useEffect(() => {
-    return () => resetQuery();
-    // eslint-disable-next-line
-  }, []);
-
+    setCurrentQuery(query);
+  }, [query]);
   return (
     <div className="SearchContainer">
       <div className="SearchBar">
@@ -29,8 +28,9 @@ export default function SearchBar({
           spellCheck="false"
           autoFocus={true}
           placeholder="Search for Artists, Songs, or Podcasts"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
+          value={currentQuery}
+          onChange={(e) => setCurrentQuery(e.target.value)}
+          onKeyPress={handleKeyPress}
         />
       </div>
     </div>
