@@ -13,14 +13,11 @@ export default function BrowsePage() {
     search(query);
   }, [query]);
 
-  useEffect(() => {
-    console.log(data)
-  },[data])
   return (
     <div className="page-content">
       <div className="browsePage">
         <PageTitle name={`Result for searching ${query}`} />
-        <div className="browseGrid">
+        <div className="grid grid-cols-3 gap-4">
           {data.items.map((item: Music) => (
             <MusicCard music={item} key={item.id} />
           ))}
