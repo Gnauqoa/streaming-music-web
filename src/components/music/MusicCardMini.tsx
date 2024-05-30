@@ -40,8 +40,10 @@ const MusicCardMini = ({ music }: { music: Music }) => {
           <img className="object-cover" src={music.image_url} alt="" />
         </Stack>
         <Stack>
-          <Typography sx={{ fontSize: 14 }}>{music.name}</Typography>
-          <Typography sx={{ fontSize: 12 }}>
+          <Typography sx={{ fontSize: 20, fontWeight: 600 }}>
+            {music.name}
+          </Typography>
+          <Typography sx={{ fontSize: 14 }}>
             {music.artists.map((artist) => artist.name).join(", ")}
           </Typography>
         </Stack>

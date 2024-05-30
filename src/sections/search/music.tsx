@@ -1,6 +1,6 @@
 import { CircularProgress, Stack, Typography } from "@mui/material";
 import { useSearchParams } from "react-router-dom";
-import useSearch from "../../hooks/useSearch";
+import { useSearchMusic } from "../../hooks/useSearch";
 import { useEffect } from "react";
 import MusicCardMini from "../../components/music/MusicCardMini";
 import MusicCard from "../../components/music/MusicCard";
@@ -8,7 +8,7 @@ import MusicCard from "../../components/music/MusicCard";
 const SearchMusicResults = () => {
   const [searchParams] = useSearchParams();
   const query = searchParams.get("query") || "";
-  const { data, search, loading } = useSearch();
+  const { data, search, loading } = useSearchMusic();
 
   useEffect(() => {
     search(query, 5);
@@ -26,7 +26,7 @@ const SearchMusicResults = () => {
             </Typography>
             <MusicCard music={data.items[0]} />
           </Stack>
-          <Stack flexDirection={"column"} gap={3}>
+          <Stack flexDirection={"column"} gap={3} width={"100%"}>
             <Typography sx={{ fontSize: 28, fontWeight: 600 }}>
               Songs
             </Typography>

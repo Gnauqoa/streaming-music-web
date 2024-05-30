@@ -12,7 +12,7 @@ const MusicCard = ({ music }: { music: Music }) => {
           backgroundColor: "#272727",
           borderRadius: 3,
           p: 3,
-          width: 500,
+          width: 600,
           gap: 1,
           position: "relative",
         }}
@@ -35,9 +35,9 @@ const MusicCard = ({ music }: { music: Music }) => {
         </IconButton>
 
         <Stack sx={{ maxWidth: 150, maxHeight: 150 }}>
-          <img style={{ objectFit: "cover" }} src={music.image_url} alt="" />
+          <img style={{ objectFit: "cover" }} src={music?.image_url} alt="" />
         </Stack>
-        <Typography sx={{ fontSize: 24 }}>{music.name}</Typography>
+        <Typography sx={{ fontSize: 24 }}>{music?.name}</Typography>
         <Stack flexDirection={"row"} alignItems={"center"} gap={1}>
           <Typography sx={{ color: "#b3b3b3" }}>Song</Typography>
           <span
@@ -48,7 +48,7 @@ const MusicCard = ({ music }: { music: Music }) => {
               borderRadius: "999px",
             }}
           ></span>
-          <Typography>{music.artists[0].name}</Typography>
+          <Typography>{music?.artists[0].name}</Typography>
         </Stack>
       </Stack>
     </div>
