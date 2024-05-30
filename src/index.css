@@ -680,6 +680,7 @@ body {
   border: 0;
   color: hsla(0, 0%, 100%, 0.7);
   font-size: 15px;
+  cursor: pointer;
 }
 
 .moreButton:hover {
@@ -978,5 +979,16 @@ body {
   ::-webkit-scrollbar-thumb {
     border-radius: 0.125rem;
     background-color: gray;
-  };
+  }
+}
+
+.trackMoreButton {
+  background: transparent;
+  border: 0;
+  color: hsla(0, 0%, 100%, 0.7);
+  cursor: pointer;
+}
+
+.trackMoreButton:hover {
+  color: #fff;
 }

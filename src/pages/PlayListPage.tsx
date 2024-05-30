@@ -34,6 +34,7 @@ export default function PlayListPage() {
           },
         ],
       },
+      duration_ms: 260000,
     },
     {
       id: "playlist2-2",
@@ -50,6 +51,7 @@ export default function PlayListPage() {
           },
         ],
       },
+      duration_ms: 260000,
     },
     {
       id: "playlist2-3",
@@ -66,6 +68,7 @@ export default function PlayListPage() {
           },
         ],
       },
+      duration_ms: 260000,
     },
     {
       id: "playlist2-4",
@@ -86,6 +89,7 @@ export default function PlayListPage() {
           },
         ],
       },
+      duration_ms: 260000,
     },
     {
       id: "playlist2-5",
@@ -102,6 +106,7 @@ export default function PlayListPage() {
           },
         ],
       },
+      duration_ms: 260000,
     },
     {
       id: "playlist2-6",
@@ -118,6 +123,7 @@ export default function PlayListPage() {
           },
         ],
       },
+      duration_ms: 260000,
     },
     {
       id: "playlist2-7",
@@ -134,6 +140,7 @@ export default function PlayListPage() {
           },
         ],
       },
+      duration_ms: 260000,
     },
     {
       id: "playlist2-8",
@@ -150,6 +157,7 @@ export default function PlayListPage() {
           },
         ],
       },
+      duration_ms: 260000,
     },
     {
       id: "playlist2-9",
@@ -166,6 +174,7 @@ export default function PlayListPage() {
           },
         ],
       },
+      duration_ms: 260000,
     },
     {
       id: "playlist2-10",
@@ -182,6 +191,7 @@ export default function PlayListPage() {
           },
         ],
       },
+      duration_ms: 260000,
     },
   ]);
   const [like, setLike] = useState(false);
