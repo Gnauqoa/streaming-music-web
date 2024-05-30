@@ -25,7 +25,7 @@ export default function PlayListFunctions({
     case "user":
       return (
         <div className="playListFunctions">
-          <FollowButton follow={follow} />
+          {/* <FollowButton follow={follow} /> */}
           <MoreButton onClick={() => {}} />
         </div>
       );
