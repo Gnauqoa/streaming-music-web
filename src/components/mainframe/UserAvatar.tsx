@@ -11,7 +11,6 @@ import {
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../hooks/useAuth";
-import { pathPage } from "../../routes/path";
 
 const UserAvatar = () => {
   const { user, isAuth, logout } = useAuth();
@@ -29,7 +28,7 @@ const UserAvatar = () => {
 
   const handleProfileClick = () => {
     setAnchorEl(null);
-    navigate('/user/1')
+    navigate('/profile')
   }
 
   if (!isAuth) return <></>;

@@ -28,7 +28,7 @@ export default function PageBanner({
     <div
       className="banner"
       style={{
-        backgroundColor: `${primary_color}`,
+        backgroundColor: primary_color ? `${primary_color}` : "rgb(83, 83, 83)",
         height: pageTitle === "artist" ? "40vh" : "30vh",
       }}
     >

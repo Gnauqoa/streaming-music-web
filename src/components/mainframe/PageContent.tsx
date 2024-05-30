@@ -8,6 +8,7 @@ import AlbumPage from "../../pages/AlbumPage";
 import UserPage from "../../pages/UserPage";
 import LoginPage from "../../pages/LoginPage";
 import ArtistPage from "../../pages/ArtistPage";
+import ProfilePage from "../../pages/ProfilePage";
 
 import { Tooltip } from "react-tooltip";
 import generateContent from "../../utils/TipContent";
@@ -25,6 +26,7 @@ export default function PageContent({ query }: { query: string }) {
         <Route path="/playlist/:id" element={<PlayListPage />} />
         <Route path="/album/:id" element={<AlbumPage />} />
         <Route path="/user/:id" element={<UserPage />} />
+        <Route path="profile" element={<ProfilePage />} />
         <Route path="/login" element={<LoginPage />} />
         {/* Auto redirect */}
         <Route
