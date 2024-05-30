@@ -7,10 +7,12 @@ import {
 } from "react";
 import { AudioContextType } from "../@types/audio";
 import { Music } from "../@types/music";
+import { Playlist } from "../@types/playlist";
 
 const AudioContext = createContext<AudioContextType | null>(null);
 
 export const AudioContextProvider = ({ children }: { children: ReactNode }) => {
+  const [currentPlaylistId, setCurrentPlaylistId] = useState<number | null>(null);
   const [open, setOpen] = useState<boolean>(false);
   const [hide, setHide] = useState<boolean>(false);
   const [index, setIndex] = useState<number>(0);
@@ -21,6 +23,12 @@ export const AudioContextProvider = ({ children }: { children: ReactNode }) => {
   const [duration, setDuration] = useState<number>(0);
   const currentMusic = playlist[index];
 
+  const handleStartPlaylist = (playlist: Playlist, index: number) => {
+    setPlaylist(playlist.musics);
+    setCurrentPlaylistId(playlist.id);
+    setIndex(index);
+    setOpen(true);
+  }
   const handlePlaySong = (music: Music) => {
     const findResult = playlist.findIndex((item) => item.id === music.id);
     if (findResult !== -1)
@@ -107,6 +115,8 @@ export const AudioContextProvider = ({ children }: { children: ReactNode }) => {
         volume: audio?.volume || 0,
         onNext: handleNext,
         onPrev: handlePrev,
+        currentPlaylistId,
+        onStartPlaylist: handleStartPlaylist,
         setHide,
         setOpen,
         loading: false,

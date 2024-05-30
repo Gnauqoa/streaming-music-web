@@ -1,4 +1,5 @@
 import { Music } from "./music";
+import { Playlist } from "./playlist";
 
 export type AudioContextType = {
   onNext: () => void;
@@ -11,6 +12,7 @@ export type AudioContextType = {
   open: boolean;
   hide: boolean;
   index: number;
+  onStartPlaylist: (playlist: Playlist, index: number) => void;
   onTogglePlay: () => void;
   onPlaySong: (music: Music) => void;
   onSeek: (time: number | number[]) => void;
@@ -18,4 +20,5 @@ export type AudioContextType = {
   duration: number;
   isPlaying: boolean;
   currentMusic: Music | null;
+  currentPlaylistId: number | null,
 };

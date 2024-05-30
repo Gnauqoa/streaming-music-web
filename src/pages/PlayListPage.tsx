@@ -1,11 +1,13 @@
 import { useEffect } from "react";
 
 import PageBanner from "../components/mainframe/PageBanner";
-import PlayListFunctions from "../components/mainframe/PlayListFunctions";
+import PauseIcon from "@mui/icons-material/Pause";
 import usePlaylist from "../hooks/usePlaylist";
 import { useParams } from "react-router-dom";
-import { CircularProgress } from "@mui/material";
+import { CircularProgress, IconButton } from "@mui/material";
 import PlaylistMusicCard from "../components/music/PlaylistMusicCard";
+import { PlayArrow } from "@mui/icons-material";
+import useAudioControl from "../hooks/useAudioControl";
 
 const bannerInfo = {
   name: "Discover Weekly",
@@ -23,6 +25,9 @@ const bannerInfo = {
 export default function PlayListPage() {
   const { playlist, loading, getPlaylist } = usePlaylist();
   const params = useParams();
+  const { onStartPlaylist, isPlaying, currentPlaylistId, onTogglePlay } =
+    useAudioControl();
+  const isCurrent = currentPlaylistId === playlist?.id;
   useEffect(() => {
     if (!params.id) return;
     getPlaylist(params.id);
@@ -50,10 +55,33 @@ export default function PlayListPage() {
           className="playListOverlay"
           style={{ backgroundColor: `${bannerInfo.primary_color}` }}
         />
-        <PlayListFunctions follow={playlist.liked} />
+        <div className="flex flex-row gap-3 py-2 px-5">
+          <IconButton
+            onClick={() =>
+              isCurrent ? onTogglePlay() : onStartPlaylist(playlist, 0)
+            }
+            sx={{
+              backgroundColor: "primary.main",
+              ":hover": {
+                backgroundColor: "primary.main",
+              },
+            }}
+          >
+            {isCurrent ? (
+              isPlaying ? (
+                <PauseIcon sx={{ color: "#000" }} />
+              ) : (
+                <PlayArrow sx={{ color: "#000" }} />
+              )
+            ) : (
+              <PlayArrow sx={{ color: "#000" }} />
+            )}
+          </IconButton>
+        </div>
         <div className="flex flex-col px-8">
           {playlist.musics.map((music, index) => (
             <PlaylistMusicCard
+              playlist={playlist}
               music={{ ...music, index: index + 1 }}
               key={music.id}
             />

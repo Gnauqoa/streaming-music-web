@@ -5,10 +5,17 @@ import useToggle from "../../hooks/useToggle";
 import { PlayArrow } from "@mui/icons-material";
 import useAudioControl from "../../hooks/useAudioControl";
 import PauseIcon from "@mui/icons-material/Pause";
+import { Playlist } from "../../@types/playlist";
 
-const PlaylistMusicCard = ({ music }: { music: Music & { index: number } }) => {
+const PlaylistMusicCard = ({
+  music,
+  playlist,
+}: {
+  music: Music & { index: number };
+  playlist: Playlist;
+}) => {
   const { toggle: hover, onOpen: onHover, onClose: onLeave } = useToggle();
-  const { onPlaySong, currentMusic, isPlaying, onTogglePlay } =
+  const { currentMusic, isPlaying, onTogglePlay, onStartPlaylist } =
     useAudioControl();
   const isCurrent = currentMusic?.id === music.id;
   return (
@@ -28,7 +35,11 @@ const PlaylistMusicCard = ({ music }: { music: Music & { index: number } }) => {
       >
         {hover ? (
           <IconButton
-            onClick={() => (isCurrent ? onTogglePlay() : onPlaySong(music))}
+            onClick={() =>
+              isCurrent
+                ? onTogglePlay()
+                : onStartPlaylist(playlist, music.index - 1)
+            }
           >
             {isCurrent ? (
               isPlaying ? (
