@@ -12,6 +12,7 @@ import { pathPage } from "../../../routes/path";
 import { useDispatch } from "../../../redux/store";
 import { setUser } from "../../../redux/slices/user";
 import axios from "../../../utils/axios";
+import { Typography } from "@mui/material";
 
 export type SignInFormProps = {
   account: string;
@@ -64,9 +65,10 @@ const Login = () => {
           backgroundColor: "#121212",
         }}
       >
+        <Typography sx={{fontSize: 32, fontWeight: 600, marginBottom: '25px', textAlign: 'center'}}>Login</Typography>
         <AuthTextField
-          label={"Account"}
-          placeholder={"Account"}
+          label={"Username"}
+          placeholder={"Username"}
           name="account"
         />
         <AuthTextField
@@ -86,6 +88,18 @@ const Login = () => {
         >
           Login
         </LoadingButton>
+
+        <a 
+          href="/signup"
+          style={{
+            display: 'block',
+            textAlign: 'right',
+            color: 'white',
+            fontSize: '14px',
+            fontWeight: 'bold',
+            marginTop: '15px',
+          }}
+        >Register</a>
       </div>
     </FormProvider>
   );

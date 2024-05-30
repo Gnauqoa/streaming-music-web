@@ -65,45 +65,72 @@ const Register = () => {
   };
   return (
     <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          gap: 6,
-          justifyContent: "center",
-          alignItems: "center",
-          pt: 10,
-          pb: 10,
+      <div
+        style={{
+          display: "flex", 
+          flexDirection: "column", 
+          margin: '150px auto 0',
+          padding: '35px 30px',
+          width: '750px',
+          backgroundColor: "#121212",
         }}
       >
-        <Stack sx={{ maxWidth: 350, gap: 3 }}>
-          <Typography sx={{ fontSize: 50 }}>Sign up to start listen</Typography>
-          <AuthTextField placeholder={"Email"} name="email" />
-          <AuthTextField placeholder={"User name"} name="username" />
-          <AuthTextField placeholder={"First name"} name="first_name" />
-          <AuthTextField placeholder={"Last name"} name="last_name" />
-          <AuthTextField
-            name="birth"
-            placeholder={"*************"}
-            type={"date"}
-          />
-          <AuthTextField
-            name="password"
-            placeholder={"*************"}
-            type={"password"}
-          />
-          <LoadingButton
-            sx={{ backgroundColor: "primary.main" }}
-            fullWidth
-            size="large"
-            type="submit"
-            variant="contained"
-            loading={isSubmitting}
-          >
-            Register
-          </LoadingButton>{" "}
-        </Stack>
-      </Box>
+        <Typography sx={{fontSize: 32, fontWeight: 600, marginBottom: '25px', textAlign: 'center'}}>Sign up to start listen</Typography>
+        <AuthTextField 
+          label="Email" 
+          placeholder={"Email"} 
+          name="email" 
+        />
+        <AuthTextField 
+          label="Username"
+          placeholder={"Username"} 
+          name="username" 
+        />
+        <AuthTextField 
+          label="First name"
+          placeholder={"First name"} 
+          name="first_name" 
+        />
+        <AuthTextField 
+          label="Last name"
+          placeholder={"Last name"} 
+          name="last_name" 
+        />
+        <AuthTextField
+          label="Date of birth"
+          name="birth"
+          placeholder={"*************"}
+          type={"date"}
+        />
+        <AuthTextField
+          label="Password"
+          name="password"
+          placeholder={"*************"}
+          type={"password"}
+        />
+        <LoadingButton
+          sx={{ backgroundColor: "primary.main", width: '350px', margin: '0 auto' }}
+          fullWidth
+          size="large"
+          type="submit"
+          variant="contained"
+          loading={isSubmitting}
+        >
+          Register
+        </LoadingButton>
+
+        <a 
+          href="/login"
+          style={{
+            display: 'block',
+            textAlign: 'right',
+            color: 'white',
+            fontSize: '14px',
+            fontWeight: 'bold',
+            marginTop: '15px',
+          }}
+        >Login</a>
+      </div>
     </FormProvider>
   );
 };
