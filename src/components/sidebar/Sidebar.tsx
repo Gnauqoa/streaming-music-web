@@ -6,7 +6,6 @@ import Logo from "../../assets/Logo.png";
 import NavList from "./NavList";
 import NavItem from "./NavItem";
 import PlayLists from "./PlayLists";
-import FeaturedPlaylist from "./FeaturedPlaylist";
 import FeaturedItem from "./FeaturedItem";
 import OtherPlaylist from "./OtherPlaylist";
 
@@ -15,6 +14,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import LibraryMusicIcon from "@mui/icons-material/LibraryMusic";
 
 import generateContent from "../../utils/TipContent";
+import CreatePlaylist from "./CreatePlaylist";
 
 function Sidebar({ playlists }: { playlists: any[] }) {
   const [showTooltip, setShowTooltip] = React.useState(false);
@@ -22,14 +22,14 @@ function Sidebar({ playlists }: { playlists: any[] }) {
   return (
     <>
       <div className="sidebar">
-        <img 
-          src={Logo} 
+        <img
+          src={Logo}
           style={{
-            width: '150px',
-            objectFit: 'cover',
-            display: 'block',
-            padding: '25px 0',
-            margin: '0 auto',
+            width: "150px",
+            objectFit: "cover",
+            display: "block",
+            padding: "25px 0",
+            margin: "0 auto",
           }}
           alt="Logo"
         />
@@ -52,9 +52,10 @@ function Sidebar({ playlists }: { playlists: any[] }) {
         </NavList>
         <PlayLists
           top={
-            <FeaturedPlaylist>
-              <FeaturedItem label="Liked Songs" />
-            </FeaturedPlaylist>
+            <div className="flex flex-col">
+              <CreatePlaylist />
+              <FeaturedItem label="Liked Songs" to="/playlist/-1" />
+            </div>
           }
           bottom={<OtherPlaylist playlists={playlists} />}
         />
