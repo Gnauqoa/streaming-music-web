@@ -8,10 +8,12 @@ import HistoryNav from "./HistoryNav";
 import UserPrompt from "./UserPrompt";
 import SearchBar from "./SearchBar";
 import Player from "../player";
+import useAudioControl from "../../hooks/useAudioControl";
+import { Stack } from "@mui/material";
 
 function MainFrame() {
   const [query, setQuery] = useState("");
-
+  const { open } = useAudioControl();
   return (
     <div className="featured">
       <Headerbar>
@@ -22,7 +24,9 @@ function MainFrame() {
         <UserPrompt />
       </Headerbar>
       <Player />
-      <PageContent query={query} />
+      <Stack sx={{ pb: open ? 20 : 0 }}>
+        <PageContent query={query} />
+      </Stack>
     </div>
   );
 }

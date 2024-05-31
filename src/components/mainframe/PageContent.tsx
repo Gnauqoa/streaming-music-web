@@ -13,9 +13,11 @@ import ProfilePage from "../../pages/ProfilePage";
 import { Tooltip } from "react-tooltip";
 import generateContent from "../../utils/TipContent";
 import { useState } from "react";
+import useAudioControl from "../../hooks/useAudioControl";
 
 export default function PageContent({ query }: { query: string }) {
   const [showTooltip, setShowTooltip] = useState(false);
+  const { open } = useAudioControl();
 
   return (
     <>
@@ -28,7 +30,7 @@ export default function PageContent({ query }: { query: string }) {
         <Route path="/user/:id" element={<UserPage />} />
         <Route path="profile" element={<ProfilePage />} />
         <Route path="/login" element={<LoginPage />} />
-        {/* Auto redirect */}
+
         <Route
           path="/artist/:id"
           element={<Navigate to="overview" replace />}
