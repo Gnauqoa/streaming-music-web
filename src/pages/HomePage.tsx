@@ -1,14 +1,16 @@
 import { useEffect } from "react";
-import { useSearchPlaylist } from "../hooks/useSearch";
+import { Category, useSearchMusic, useSearchPlaylist } from "../hooks/useSearch";
 import PlaylistCard from "../components/playlist/PlaylistCard";
 import { CircularProgress, Typography } from "@mui/material";
 import useLikedMusic from "../hooks/useLikedMusic";
 
 export default function HomePage() {
   const { search, data, loading } = useSearchPlaylist();
+  const { search: searchMusic, data: musics, loading: musicLoading } = useSearchMusic();
+
   const { playlist } = useLikedMusic();
   useEffect(() => {
-    search("");
+    search("", 10, Category.HOT);
   }, []);
   return (
     <div className="page-content">

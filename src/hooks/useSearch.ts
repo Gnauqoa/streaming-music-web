@@ -14,6 +14,7 @@ import { Playlist } from "../@types/playlist";
 export enum Category {
   HOT = "hot",
   NEW = "new",
+  DEFAULT = "default",
 }
 export const useSearchMusic = () => {
   const { toggle: loading, onOpen: onLoading, onClose: onLoaded } = useToggle();
@@ -28,7 +29,7 @@ export const useSearchMusic = () => {
   const search = async (
     name: string,
     perPage = 10,
-    category = Category.HOT
+    category = Category.DEFAULT
   ) => {
     onLoading();
     const data = await searchMusicAPI({
@@ -80,7 +81,7 @@ export const useSearchArtist = () => {
   const search = async (
     name: string,
     perPage = 10,
-    category = Category.HOT
+    category = Category.DEFAULT
   ) => {
     onLoading();
     const data = await searchArtistAPI({
@@ -99,7 +100,7 @@ export const useSearchArtist = () => {
       name: "",
       page: data.current_page + 1,
       type: SearchType.ARTIST,
-      category: Category.HOT,
+      category: Category.DEFAULT,
     });
     setData((state) => ({
       ...state,
@@ -132,7 +133,7 @@ export const useSearchPlaylist = () => {
   const search = async (
     name: string,
     perPage = 10,
-    category = Category.HOT
+    category = Category.DEFAULT
   ) => {
     onLoading();
     const data = await searchPlaylistAPI({
@@ -151,7 +152,7 @@ export const useSearchPlaylist = () => {
       name: "",
       page: data.current_page + 1,
       type: SearchType.PLAYLIST,
-      category: Category.HOT,
+      category: Category.DEFAULT,
     });
     setData((state) => ({
       ...state,
