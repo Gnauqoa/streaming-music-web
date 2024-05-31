@@ -13,8 +13,10 @@ import { useDispatch } from "../redux/store";
 import { getLikedMusic } from "../redux/slices/likedMusic";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import useAuth from "../hooks/useAuth";
 
 export default function PlayListPage() {
+  const { user } = useAuth();
   const params = useParams();
   const {
     playlist: playlistData,
@@ -83,7 +85,7 @@ export default function PlayListPage() {
                   <PlayArrow sx={{ color: "#000" }} />
                 )}
               </IconButton>
-              {playlist.id !== -1 && (
+              {(playlist.id !== -1 && playlist?.user?.id !== user?.id) && (
                 <IconButton
                   onClick={() =>
                     playlist.liked ? dislikePlaylist() : likePlaylist()

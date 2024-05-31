@@ -18,7 +18,7 @@ const SearchMusicResults = () => {
     <Stack sx={{ display: "flex", flexDirection: "row", gap: 3, pt: 3 }}>
       {loading ? (
         <CircularProgress />
-      ) : (
+      ) : data.items.length ? (
         <>
           <Stack flexDirection={"column"} gap={3}>
             <Typography sx={{ fontSize: 28, fontWeight: 600 }}>
@@ -37,6 +37,10 @@ const SearchMusicResults = () => {
             </Stack>
           </Stack>
         </>
+      ) : (
+        <Typography sx={{ fontSize: 28, fontWeight: 600 }}>
+          Song result: Look like don't have any song match
+        </Typography>
       )}
     </Stack>
   );

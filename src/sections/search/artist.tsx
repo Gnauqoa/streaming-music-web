@@ -19,7 +19,7 @@ const SearchArtistResult = () => {
       </Typography>
       {loading ? (
         <CircularProgress />
-      ) : (
+      ) : data.items.length ? (
         <Stack
           sx={{
             display: "flex",
@@ -34,6 +34,10 @@ const SearchArtistResult = () => {
             <ArtistCard artist={item} key={item.id} />
           ))}
         </Stack>
+      ) : (
+        <Typography sx={{ fontSize: 28, fontWeight: 600 }}>
+          Artist result: Look like don't have any song match
+        </Typography>
       )}
     </Stack>
   );
