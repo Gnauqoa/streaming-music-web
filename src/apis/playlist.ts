@@ -43,3 +43,31 @@ export const getCurrentUserPlaylistAPI = (): Promise<
 > => {
   return axios.get("/api/v1/users/current/playlists");
 };
+export const addMusicToPlaylistAPI = ({
+  id,
+  music_id,
+}: {
+  id: number;
+  music_id: number;
+}): Promise<
+  AxiosResponse<{
+    data: Playlist;
+  }>
+> => {
+  return axios.post(`/api/v1/playlists/${id}/musics`, { music_id: music_id });
+};
+export const deleteMusicToPlaylistAPI = ({
+  id,
+  music_id,
+}: {
+  id: number;
+  music_id: number;
+}): Promise<
+  AxiosResponse<{
+    data: Playlist;
+  }>
+> => {
+  return axios.delete(`/api/v1/playlists/${id}/musics`, {
+    params: { music_id },
+  });
+};

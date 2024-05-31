@@ -9,6 +9,7 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import useMusic from "../../hooks/useMusic";
 import { useEffect } from "react";
+import AddCircleIcon from "@mui/icons-material/AddCircle";
 
 const MusicCardMini = ({ music }: { music: Music }) => {
   const { toggle: hover, onOpen: onHover, onClose: onLeave } = useToggle();
@@ -22,7 +23,6 @@ const MusicCardMini = ({ music }: { music: Music }) => {
   const {
     likeMusic,
     dislikeMusic,
-    loading,
     setMusic,
     music: currentMusic,
   } = useMusic();
@@ -109,6 +109,11 @@ const MusicCardMini = ({ music }: { music: Music }) => {
           <Typography sx={{ ml: "auto" }}>
             {formatDuration(currentMusic.duration_ms)}
           </Typography>
+          {hover && (
+            <IconButton>
+              <AddCircleIcon />
+            </IconButton>
+          )}
         </Stack>
       </Stack>
     </div>

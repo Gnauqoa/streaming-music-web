@@ -1,13 +1,13 @@
 import { CircularProgress, Stack, Typography } from "@mui/material";
 import { useSearchParams } from "react-router-dom";
-import { useSearchArtist } from "../../hooks/useSearch";
+import { useSearchPlaylist } from "../../hooks/useSearch";
 import { useEffect } from "react";
-import ArtistCard from "../../components/artist/ArtistCard";
+import PlaylistCard from "../../components/playlist/PlaylistCard";
 
-const SearchArtistResult = () => {
+const SearchPlaylistResult = () => {
   const [searchParams] = useSearchParams();
   const query = searchParams.get("query") || "";
-  const { data, search, loading } = useSearchArtist();
+  const { data, search, loading } = useSearchPlaylist();
 
   useEffect(() => {
     search(query, 10);
@@ -19,7 +19,7 @@ const SearchArtistResult = () => {
       ) : data.items.length ? (
         <>
           <Typography sx={{ fontSize: 28, fontWeight: 600 }}>
-            Artist result
+            Playlist result
           </Typography>
           <Stack
             sx={{
@@ -32,16 +32,16 @@ const SearchArtistResult = () => {
             className="hide-scrollbars"
           >
             {data.items.map((item) => (
-              <ArtistCard artist={item} key={item.id} />
+              <PlaylistCard playlist={item} key={item.id} />
             ))}
           </Stack>
         </>
       ) : (
         <Typography sx={{ fontSize: 28, fontWeight: 600 }}>
-          {/* Artist result: Look like don't have any artist match */}
+          {/* Playlist result: Look like don't have any playlist match */}
         </Typography>
       )}
     </Stack>
   );
 };
-export default SearchArtistResult;
+export default SearchPlaylistResult;
