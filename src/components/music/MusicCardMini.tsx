@@ -1,4 +1,4 @@
-import { IconButton, Stack, Typography } from "@mui/material";
+import { IconButton, Menu, MenuItem, Stack, Typography } from "@mui/material";
 import { Music } from "../../@types/music";
 import { formatDuration } from "../../utils/music";
 import useToggle from "../../hooks/useToggle";
@@ -8,11 +8,24 @@ import PauseIcon from "@mui/icons-material/Pause";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import useMusic from "../../hooks/useMusic";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import AddCircleIcon from "@mui/icons-material/AddCircle";
+import AddMusicModal from "../playlist/AddMusicModal";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
 
 const MusicCardMini = ({ music }: { music: Music }) => {
+  const {
+    toggle: openMenu,
+    onOpen: onOpenMenu,
+    onClose: onCloseMenu,
+  } = useToggle();
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const { toggle: hover, onOpen: onHover, onClose: onLeave } = useToggle();
+  const {
+    toggle: modal,
+    onOpen: onOpenModal,
+    onClose: onCloseModal,
+  } = useToggle();
   const {
     onPlaySong,
     currentMusic: currentMusicPlaying,
@@ -20,12 +33,16 @@ const MusicCardMini = ({ music }: { music: Music }) => {
     onTogglePlay,
   } = useAudioControl();
   const isCurrent = currentMusicPlaying?.id === music?.id;
-  const {
-    likeMusic,
-    dislikeMusic,
-    setMusic,
-    music: currentMusic,
-  } = useMusic();
+  const { likeMusic, dislikeMusic, setMusic, music: currentMusic } = useMusic();
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+    onOpenMenu();
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+    onCloseMenu();
+  };
+
   useEffect(() => {
     setMusic(music);
   }, [music]);
@@ -109,11 +126,57 @@ const MusicCardMini = ({ music }: { music: Music }) => {
           <Typography sx={{ ml: "auto" }}>
             {formatDuration(currentMusic.duration_ms)}
           </Typography>
-          {hover && (
-            <IconButton>
-              <AddCircleIcon />
-            </IconButton>
-          )}
+          <AddMusicModal music={music} open={modal} onClose={onCloseModal} />
+          <IconButton
+            aria-label="more"
+            id="long-button"
+            aria-haspopup="true"
+            onClick={handleClick}
+          >
+            <MoreVertIcon />
+          </IconButton>
+          <Menu
+            anchorEl={anchorEl}
+            id="account-menu"
+            open={openMenu}
+            onClose={handleClose}
+            onClick={handleClose}
+            PaperProps={{
+              elevation: 0,
+              sx: {
+                overflow: "visible",
+                filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
+                mt: 1.5,
+                "& .MuiAvatar-root": {
+                  width: 32,
+                  height: 32,
+                  ml: -0.5,
+                  mr: 1,
+                },
+                "&::before": {
+                  content: '""',
+                  display: "block",
+                  position: "absolute",
+                  top: 0,
+                  right: 14,
+                  width: 10,
+                  height: 10,
+                  bgcolor: "background.paper",
+                  transform: "translateY(-50%) rotate(45deg)",
+                  zIndex: 0,
+                },
+              },
+            }}
+            transformOrigin={{ horizontal: "right", vertical: "top" }}
+            anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+          >
+            <MenuItem onClick={onOpenModal}>
+              <div className="flex flex-row gap-3 py-1">
+                <AddCircleIcon />
+                Add
+              </div>
+            </MenuItem>
+          </Menu>
         </Stack>
       </Stack>
     </div>
