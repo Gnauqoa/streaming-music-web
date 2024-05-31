@@ -34,12 +34,15 @@ const PlaylistMiniCard = ({ playlist }: { playlist: Playlist }) => {
               {playlist.name.slice(0, 23)}
               {playlist.name.length > 23 && "..."}
             </Typography>
+
             {playlist.user?.first_name && playlist.user?.last_name && (
-              <Typography>
-                Playlist{" "}
-                <span className="w-[10px] h-[10px] bg-[#bababa] rounded-[99px]"></span>{" "}
-                {playlist.user?.first_name + playlist.user?.last_name}
-              </Typography>
+              <div className="flex flex-row items-center gap-1">
+                <Typography>Playlist </Typography>
+                <span className="w-[5px] h-[5px] bg-[#bababa] rounded-[99px]"></span>
+                <Typography>
+                  {playlist.user?.first_name + playlist.user?.last_name}
+                </Typography>
+              </div>
             )}
           </Stack>
         </Stack>
