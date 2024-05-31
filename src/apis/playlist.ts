@@ -20,12 +20,12 @@ export const updatePlaylistAPI = ({
 export const likePlaylistAPI = (
   id: string | number
 ): Promise<AxiosResponse<{ data: Playlist }>> => {
-  return axios.post(`/api/v1/playlists/${id}like`);
+  return axios.post(`/api/v1/playlists/${id}/like`);
 };
 export const dislikePlaylistAPI = (
   id: string | number
 ): Promise<AxiosResponse<{ data: Playlist }>> => {
-  return axios.delete(`/api/v1/playlists/${id}like`);
+  return axios.delete(`/api/v1/playlists/${id}/like`);
 };
 export const deletePlaylistAPI = (
   id: string | number

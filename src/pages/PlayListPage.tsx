@@ -11,12 +11,21 @@ import useAudioControl from "../hooks/useAudioControl";
 import useLikedMusicPlaylist from "../hooks/useLikedMusic";
 import { useDispatch } from "../redux/store";
 import { getLikedMusic } from "../redux/slices/likedMusic";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 export default function PlayListPage() {
   const params = useParams();
-  const { playlist: playlistData, loading, getPlaylist } = usePlaylist();
+  const {
+    playlist: playlistData,
+    fullLoading,
+    getPlaylist,
+    likePlaylist,
+    dislikePlaylist,
+  } = usePlaylist();
   const { onStartPlaylist, isPlaying, currentPlaylistId, onTogglePlay } =
     useAudioControl();
+
   const { playlist: likedPlaylist, isLoading } = useLikedMusicPlaylist();
   const playlist = Number(params.id) !== -1 ? playlistData : likedPlaylist;
 
@@ -30,7 +39,7 @@ export default function PlayListPage() {
       dispatch(getLikedMusic());
     }
   }, [params.id]);
-  if (loading || isLoading) return <CircularProgress />;
+  if (fullLoading || isLoading) return <CircularProgress />;
   if (!playlist) return <></>;
   return (
     <div className="flex flex-col w-full h-full">
@@ -74,6 +83,19 @@ export default function PlayListPage() {
                   <PlayArrow sx={{ color: "#000" }} />
                 )}
               </IconButton>
+              {playlist.id !== -1 && (
+                <IconButton
+                  onClick={() =>
+                    playlist.liked ? dislikePlaylist() : likePlaylist()
+                  }
+                >
+                  {playlist.liked ? (
+                    <FavoriteIcon sx={{ color: "primary.main" }} />
+                  ) : (
+                    <FavoriteBorderIcon />
+                  )}
+                </IconButton>
+              )}
             </div>
             <div className="flex flex-col">
               {playlist.musics.map((music, index) => (

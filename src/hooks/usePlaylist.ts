@@ -8,7 +8,13 @@ import { toast } from "react-toastify";
 
 const usePlaylist = () => {
   const [playlist, setPlaylist] = useState<Playlist | null>(null);
+  const {
+    toggle: fullLoading,
+    onOpen: onFullLoading,
+    onClose: onFullLoaded,
+  } = useToggle();
   const { toggle: loading, onOpen: onLoading, onClose: onLoaded } = useToggle();
+  const disableAPI = loading || fullLoading;
   const navigate = useNavigate();
   const createPlaylist = async () => {
     try {
@@ -24,23 +30,24 @@ const usePlaylist = () => {
     }
   };
   const likePlaylist = async () => {
-    if (!playlist) return;
+    if (!playlist || disableAPI) return;
     onLoading();
     const res = await likePlaylistAPI(playlist.id);
     onLoaded();
     setPlaylist(res.data.data);
   };
   const dislikePlaylist = async () => {
-    if (!playlist) return;
+    if (!playlist || disableAPI) return;
     onLoading();
     const res = await dislikePlaylistAPI(playlist.id);
     onLoaded();
     setPlaylist(res.data.data);
   };
   const getPlaylist = async (id: string | number) => {
-    onLoading();
+    if (disableAPI) return;
+    onFullLoading();
     const res = await getPlaylistAPI(id);
-    onLoaded();
+    onFullLoaded();
     setPlaylist(res.data.data);
   };
   return {
@@ -50,6 +57,7 @@ const usePlaylist = () => {
     dislikePlaylist,
     playlist,
     loading,
+    fullLoading,
   };
 };
 export default usePlaylist;
