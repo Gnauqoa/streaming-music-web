@@ -1,15 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { dispatch } from "../store";
 import { PaginationResponseType, ReducerType } from "../../@types/request";
-import { UserType } from "../../@types/user";
-import { getCurrentUser } from "../../apis/auth";
 import { Music } from "../../@types/music";
 import { getLikedMusicAPI } from "../../apis/music";
 
 // ----------------------------------------------------------------------
 
 const initialState: { data: PaginationResponseType<Music> } & ReducerType = {
-  isLoading: true,
+  isLoading: false,
   error: null,
   data: {
     items: [],

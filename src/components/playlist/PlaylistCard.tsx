@@ -15,9 +15,11 @@ const PlaylistCard = ({ playlist }: { playlist: Playlist }) => {
         </Box>
         <Stack>
           <Typography sx={{ fontSize: 16 }}>{playlist.name}</Typography>
-          <Typography sx={{ fontSize: 12, color: "#a7a7a7" }}>
-            {playlist.description.slice(0, 15)}
-          </Typography>
+          {playlist?.description && (
+            <Typography sx={{ fontSize: 12, color: "#a7a7a7" }}>
+              {playlist.description.slice(0, 15)}
+            </Typography>
+          )}
         </Stack>
       </Stack>
     </Link>

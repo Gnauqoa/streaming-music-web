@@ -9,7 +9,7 @@ const useLikedMusicPlaylist = () => {
     isLoading,
     playlist: {
       id: -1,
-      name: "liked music",
+      name: "Liked music",
       user,
       description: "Your liked music",
       liked: true,

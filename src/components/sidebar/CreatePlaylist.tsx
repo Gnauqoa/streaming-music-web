@@ -1,8 +1,8 @@
 import AddIcon from "@mui/icons-material/Add";
-import { useNavigate } from "react-router-dom";
+import usePlaylist from "../../hooks/usePlaylist";
 
 function CreatePlaylist() {
-  const navigate = useNavigate();
+  const { createPlaylist } = usePlaylist();
   return (
     <>
       <button
@@ -10,10 +10,7 @@ function CreatePlaylist() {
         data-tip="create"
         data-for="tooltip"
         data-event="click"
-        onClick={() => {
-          let playlistid = "id of the newly created playlist";
-          navigate(`/playlist/${playlistid}`);
-        }}
+        onClick={createPlaylist}
       >
         <div className="playlist-icon">
           <AddIcon className="icon" />

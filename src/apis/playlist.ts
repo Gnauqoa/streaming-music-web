@@ -5,7 +5,7 @@ import { Playlist } from "../@types/playlist";
 export const createPlaylistAPI = (): Promise<
   AxiosResponse<{ data: Playlist }>
 > => {
-  return axios.post("/api/v1/playlist", {});
+  return axios.post("/api/v1/playlists", {});
 };
 
 export const updatePlaylistAPI = ({

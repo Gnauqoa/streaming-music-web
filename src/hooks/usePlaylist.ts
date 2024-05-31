@@ -4,17 +4,24 @@ import { createPlaylistAPI, likePlaylistAPI } from "../apis/playlist";
 import { useState } from "react";
 import { Playlist } from "../@types/playlist";
 import useToggle from "./useToggle";
+import { toast } from "react-toastify";
 
 const usePlaylist = () => {
   const [playlist, setPlaylist] = useState<Playlist | null>(null);
   const { toggle: loading, onOpen: onLoading, onClose: onLoaded } = useToggle();
   const navigate = useNavigate();
   const createPlaylist = async () => {
-    onLoading();
-    const res = await createPlaylistAPI();
-    onLoaded();
-    setPlaylist(res.data.data);
-    navigate(`/playlist/${res.data.data.id}`);
+    try {
+      onLoading();
+      const res = await createPlaylistAPI();
+      onLoaded();
+      setPlaylist(res.data.data);
+      toast.success("Playlist created successfully");
+      navigate(`/playlist/${res.data.data.id}`);
+    } catch (error) {
+      onLoaded();
+      toast.error("Failed to create playlist");
+    }
   };
   const likePlaylist = async () => {
     if (!playlist) return;
