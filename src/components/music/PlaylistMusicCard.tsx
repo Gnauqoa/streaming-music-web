@@ -72,11 +72,18 @@ const PlaylistMusicCard = ({
         <Stack sx={{ maxWidth: 50, maxHeight: 50, position: "relative" }}>
           <img className="object-cover" src={currentMusic.image_url} alt="" />
         </Stack>
-
-        <Typography sx={{ fontSize: 20, fontWeight: 400 }}>
-          {currentMusic.name}
-        </Typography>
-
+        <Stack sx={{ display: "flex", flexDirection: "column" }}>
+          <Typography sx={{ fontSize: 20, fontWeight: 400 }}>
+            {currentMusic.name}
+          </Typography>
+          {currentMusic?.artists?.length >= 1 && (
+            <Typography
+              sx={{ fontSize: 14, color: "#bababa", fontWeight: 400 }}
+            >
+              {currentMusic.artists[0].name}
+            </Typography>
+          )}
+        </Stack>
         <Stack
           sx={{
             display: "flex",
