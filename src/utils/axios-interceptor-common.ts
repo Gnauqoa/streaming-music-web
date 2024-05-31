@@ -30,8 +30,8 @@ const interceptors = {
   error: [
     (error: AxiosError) => {
       if (error.response?.status === 401) {
-        if (error.response.config.url !== "/api/v1/users/current")
-          window.location.href = pathPage.login;
+        if (error.response.config.url !== "/api/v1/users/current"){}
+          // window.location.href = pathPage.login;
       }
       throw error;
     },

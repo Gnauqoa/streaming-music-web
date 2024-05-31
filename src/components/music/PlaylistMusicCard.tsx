@@ -6,6 +6,10 @@ import { PlayArrow } from "@mui/icons-material";
 import useAudioControl from "../../hooks/useAudioControl";
 import PauseIcon from "@mui/icons-material/Pause";
 import { Playlist } from "../../@types/playlist";
+import useMusic from "../../hooks/useMusic";
+import { useEffect } from "react";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 const PlaylistMusicCard = ({
   music,
@@ -15,9 +19,18 @@ const PlaylistMusicCard = ({
   playlist: Playlist;
 }) => {
   const { toggle: hover, onOpen: onHover, onClose: onLeave } = useToggle();
-  const { currentMusic, isPlaying, onTogglePlay, onStartPlaylist } =
-    useAudioControl();
-  const isCurrent = currentMusic?.id === music.id;
+  const { likeMusic, dislikeMusic, setMusic, music: currentMusic } = useMusic();
+  const {
+    currentMusic: currentMusicPlaying,
+    isPlaying,
+    onTogglePlay,
+    onStartPlaylist,
+  } = useAudioControl();
+  const isCurrent = currentMusicPlaying?.id === music.id;
+  useEffect(() => {
+    setMusic(music);
+  }, [music]);
+  if (!currentMusic) return <></>;
   return (
     <div onMouseEnter={onHover} onMouseLeave={onLeave}>
       <Stack
@@ -57,31 +70,37 @@ const PlaylistMusicCard = ({
           </Typography>
         )}
         <Stack sx={{ maxWidth: 50, maxHeight: 50, position: "relative" }}>
-          {/* <Stack
-            sx={{
-              position: "absolute",
-              width: 50,
-              height: 50,
-              alignItems: "center",
-              justifyContent: "center",
-              backgroundColor: "#0000004d",
-              opacity: hover ? 1 : 0,
-              transition: "opacity 0.3s",
-            }}
-          >
-          
-          </Stack> */}
+          <img className="object-cover" src={currentMusic.image_url} alt="" />
+        </Stack>
 
-          <img className="object-cover" src={music.image_url} alt="" />
-        </Stack>
-        <Stack>
-          <Typography sx={{ fontSize: 20, fontWeight: 400 }}>
-            {music.name}
-          </Typography>
-        </Stack>
-        <Typography sx={{ ml: "auto" }}>
-          {formatDuration(music.duration_ms)}
+        <Typography sx={{ fontSize: 20, fontWeight: 400 }}>
+          {currentMusic.name}
         </Typography>
+
+        <Stack
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            ml: "auto",
+            alignItems: "center",
+            gap: 2,
+          }}
+        >
+          {(hover || currentMusic.liked) && (
+            <IconButton
+              onClick={() =>
+                currentMusic.liked ? dislikeMusic() : likeMusic()
+              }
+            >
+              {currentMusic.liked ? (
+                <FavoriteIcon sx={{ color: "primary.main" }} />
+              ) : (
+                <FavoriteBorderIcon />
+              )}
+            </IconButton>
+          )}
+          <Typography>{formatDuration(currentMusic.duration_ms)}</Typography>
+        </Stack>
       </Stack>
     </div>
   );
