@@ -1,6 +1,7 @@
 import { AxiosResponse } from "axios";
 import axios from "../utils/axios";
 import { Playlist } from "../@types/playlist";
+import { PaginationResponseType } from "../@types/request";
 
 export const createPlaylistAPI = (): Promise<
   AxiosResponse<{ data: Playlist }>
@@ -36,4 +37,9 @@ export const getPlaylistAPI = (
   id: string | number
 ): Promise<AxiosResponse<{ data: Playlist }>> => {
   return axios.get(`/api/v1/playlists/${id}`);
+};
+export const getCurrentUserPlaylistAPI = (): Promise<
+  AxiosResponse<{ data: PaginationResponseType<Playlist> }>
+> => {
+  return axios.get("/api/v1/users/current/playlists");
 };

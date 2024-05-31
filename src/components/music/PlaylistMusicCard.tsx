@@ -35,7 +35,7 @@ const PlaylistMusicCard = ({
     <div onMouseEnter={onHover} onMouseLeave={onLeave}>
       <Stack
         sx={{
-          backgroundColor: isCurrent ? "#535353" : hover ? "#707070" : "",
+          backgroundColor: isCurrent ? "#707070" : hover ? "#535353"  : "",
           p: 1,
           pr: 3,
           borderRadius: 1,

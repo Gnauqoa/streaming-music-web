@@ -12,7 +12,7 @@ import useAudioControl from "../../hooks/useAudioControl";
 import { Stack } from "@mui/material";
 
 function MainFrame() {
-  const [query, setQuery] = useState("");
+  const [query] = useState("");
   const { open } = useAudioControl();
   return (
     <div className="featured">

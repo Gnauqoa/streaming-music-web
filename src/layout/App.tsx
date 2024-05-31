@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import Sidebar from "../components/sidebar/Sidebar";
 import MainFrame from "../components/mainframe/MainFrame";
 import { Route, Routes } from "react-router-dom";
@@ -8,20 +6,13 @@ import LogInPage from "./LogInPage";
 import ForgotPassword from "../components/authorization/ForgotPassword";
 
 function App() {
-  const [playlists, setPlaylists] = useState([
-    { id: "playlist1", name: "Daily Mix 1" },
-    { id: "playlist2", name: "Daily Mix 2" },
-    { id: "playlist3", name: "Discover Weekly" },
-  ]);
-
   return (
     <Routes>
       <Route
         path="/*"
         element={
           <div className="App">
-            <Sidebar playlists={playlists} />
-
+            <Sidebar />
             <MainFrame />
           </div>
         }

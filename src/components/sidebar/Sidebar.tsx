@@ -1,27 +1,25 @@
-import React from "react";
-
-import { Tooltip } from "react-tooltip";
-
 import Logo from "../../assets/Logo.png";
 import NavList from "./NavList";
 import NavItem from "./NavItem";
-import PlayLists from "./PlayLists";
 import FeaturedItem from "./FeaturedItem";
-import OtherPlaylist from "./OtherPlaylist";
-
 import HomeIcon from "@mui/icons-material/Home";
 import SearchIcon from "@mui/icons-material/Search";
 import LibraryMusicIcon from "@mui/icons-material/LibraryMusic";
-
-import generateContent from "../../utils/TipContent";
 import CreatePlaylist from "./CreatePlaylist";
+import { useDispatch, useSelector } from "../../redux/store";
+import PlaylistMiniCard from "../playlist/PlaylistMiniCard";
+import { useEffect } from "react";
+import { getCurrentUserPlaylist } from "../../redux/slices/playlist";
 
-function Sidebar({ playlists }: { playlists: any[] }) {
-  const [showTooltip, setShowTooltip] = React.useState(false);
-
+function Sidebar() {
+  const { data } = useSelector((state) => state.playlist);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getCurrentUserPlaylist());
+  }, []);
   return (
     <>
-      <div className="sidebar">
+      <div className="flex flex-col gap-3 bg-[#040404] w-[335px] overflow-auto h-full pb-10">
         <img
           src={Logo}
           style={{
@@ -50,27 +48,20 @@ function Sidebar({ playlists }: { playlists: any[] }) {
             style={{ pointerEvents: "none" }}
           />
         </NavList>
-        <PlayLists
-          top={
-            <div className="flex flex-col">
-              <CreatePlaylist />
-              <FeaturedItem label="Liked Songs" to="/playlist/-1" />
-            </div>
-          }
-          bottom={<OtherPlaylist playlists={playlists} />}
-        />
+
+        <div className="flex flex-col">
+          <h1 className="play-title">playlists</h1>
+          <div className="flex flex-col gap-2">
+            <CreatePlaylist />
+            <FeaturedItem label="Liked Songs" to="/playlist/-1" />
+          </div>
+        </div>
+        <div className="flex flex-col px-2">
+          {data.items.map((item) => (
+            <PlaylistMiniCard key={item.id} playlist={item} />
+          ))}
+        </div>
       </div>
-      <Tooltip
-        className="toolTip"
-        id="tooltip"
-        place="right"
-        style={{ background: "#2e77d0" }}
-        clickable={true}
-        isOpen={showTooltip}
-        setIsOpen={setShowTooltip}
-      >
-        {(dataTip) => generateContent(dataTip, setShowTooltip)}
-      </Tooltip>
     </>
   );
 }
