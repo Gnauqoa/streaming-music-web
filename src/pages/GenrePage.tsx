@@ -147,14 +147,14 @@ export default function GenrePage() {
     <div className="GenrePage page-content">
       <PageTitle name={name} />
       <div className="browseGrid">
-        {playLists.map((playlist) => (
+        {/* {playLists.map((playlist) => (
           <PlayCard
             ref={null}
             key={playlist.id}
             info={playlist}
             type="playlist"
           />
-        ))}
+        ))} */}
       </div>
     </div>
   );

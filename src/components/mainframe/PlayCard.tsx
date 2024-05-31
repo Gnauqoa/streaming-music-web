@@ -4,35 +4,14 @@ import { Link } from "react-router-dom";
 import CardInfo from "./CardInfo";
 import CardDisplay from "./CardDisplay";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+import { Playlist } from "../../@types/playlist";
 
 const PlayCard = React.forwardRef(
-  ({ info, type }: { info: any; type: string }, ref) => {
-    const description = returnDescription(type, info);
-    const { name, id } = info;
-
-    let images;
-    if (type === "track") {
-      images = info.album.images;
-    } else {
-      images = info.images;
-    }
-    let image_url;
-    try {
-      image_url = images[0].url;
-    } catch {
-      image_url = null;
-    }
-
+  ({ playlist }: { playlist: Playlist }, ref) => {
     return (
-      <div className="pcWrapper">
+      <div className="pcWrapper max-w-[400px] max-h-[400px]">
         <Link
-          to={
-            info.to
-              ? info.to
-              : type === "track"
-              ? `/album/${info.album.id}?highlight=${id}`
-              : `/${type}/${id}`
-          }
+          to={`/playlists/${playlist.id}`}
           style={{
             textDecoration: "none",
             color: "var(--main-text)",
@@ -43,8 +22,8 @@ const PlayCard = React.forwardRef(
             ref={ref as React.RefObject<HTMLDivElement> | null}
             className="PlayCard"
           >
-            <CardDisplay url={image_url} type={type} />
-            <CardInfo title={name} description={description} />
+            <CardDisplay url={playlist.image_url} type={"playlist"} />
+            <CardInfo title={playlist.name} description={playlist.description} />
           </div>
         </Link>
         <button

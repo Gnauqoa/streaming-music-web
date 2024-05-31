@@ -1,10 +1,10 @@
 import { Music } from "./music";
-import { UserTypeNotNull } from "./user";
+import { UserType } from "./user";
 
 export type Playlist = {
   id: number;
   name: string;
-  user: UserTypeNotNull;
+  user: UserType;
   liked: boolean;
   likes_count: number;
   created_at: string;

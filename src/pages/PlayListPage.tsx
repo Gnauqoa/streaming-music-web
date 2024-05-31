@@ -8,6 +8,9 @@ import { CircularProgress, IconButton } from "@mui/material";
 import PlaylistMusicCard from "../components/music/PlaylistMusicCard";
 import { PlayArrow } from "@mui/icons-material";
 import useAudioControl from "../hooks/useAudioControl";
+import useLikedMusicPlaylist from "../hooks/useLikedMusic";
+import { useDispatch } from "../redux/store";
+import { getLikedMusic } from "../redux/slices/likedMusic";
 
 const bannerInfo = {
   name: "Discover Weekly",
@@ -23,16 +26,20 @@ const bannerInfo = {
   ],
 };
 export default function PlayListPage() {
-  const { playlist, loading, getPlaylist } = usePlaylist();
+  const { playlist: playlistData, loading, getPlaylist } = usePlaylist();
   const params = useParams();
   const { onStartPlaylist, isPlaying, currentPlaylistId, onTogglePlay } =
     useAudioControl();
+  const { playlist: likedPlaylist, isLoading } = useLikedMusicPlaylist();
+  const dispatch = useDispatch();
+  const playlist = Number(params.id) !== -1 ? playlistData : likedPlaylist;
   const isCurrent = currentPlaylistId === playlist?.id;
   useEffect(() => {
     if (!params.id) return;
-    getPlaylist(params.id);
+    if (Number(params.id) !== -1) getPlaylist(params.id);
+    else dispatch(getLikedMusic());
   }, [params.id]);
-  if (loading) return <CircularProgress />;
+  if (loading || isLoading) return <CircularProgress />;
   if (!playlist) return <></>;
   return (
     <div
@@ -50,12 +57,8 @@ export default function PlayListPage() {
           image_url: playlist.image_url,
         }}
       />
-      <div className="playListContent">
-        <div
-          className="playListOverlay"
-          style={{ backgroundColor: `${bannerInfo.primary_color}` }}
-        />
-        <div className="flex flex-row gap-3 py-2 px-5">
+      <div className="relative flex flex-col gap-3 px-8" >
+        <div className="flex flex-row gap-3 py-2">
           <IconButton
             onClick={() =>
               isCurrent ? onTogglePlay() : onStartPlaylist(playlist, 0)
@@ -78,7 +81,7 @@ export default function PlayListPage() {
             )}
           </IconButton>
         </div>
-        <div className="flex flex-col px-8">
+        <div className="flex flex-col">
           {playlist.musics.map((music, index) => (
             <PlaylistMusicCard
               playlist={playlist}

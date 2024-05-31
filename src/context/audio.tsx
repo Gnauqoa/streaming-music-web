@@ -25,7 +25,7 @@ export const AudioContextProvider = ({ children }: { children: ReactNode }) => {
 
   const handleStartPlaylist = (playlist: Playlist, index: number) => {
     setPlaylist(playlist.musics);
-    setCurrentPlaylistId(playlist.id);
+    setCurrentPlaylistId(Number(playlist.id));
     setIndex(index);
     setOpen(true);
   }

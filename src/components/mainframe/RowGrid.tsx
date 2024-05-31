@@ -4,7 +4,7 @@ import PlayCard from "./PlayCard";
 const RowGrid = React.forwardRef(({ data }: { data: any[] }, ref) => {
   return (
     <div className="RowGrid">
-      {data.map((item, index) => {
+      {/* {data.map((item, index) => {
         if (item) {
           if (index + 1 < item.length)
             return (
@@ -24,7 +24,7 @@ const RowGrid = React.forwardRef(({ data }: { data: any[] }, ref) => {
               />
             );
         } else return null;
-      })}
+      })} */}
     </div>
   );
 });

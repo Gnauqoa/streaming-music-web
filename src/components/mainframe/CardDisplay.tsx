@@ -7,7 +7,7 @@ export default function CardDisplay({
 }) {
   return (
     <div
-      className="CardDisplay"
+      className="CardDisplay max-w-[300px] max-h-[300px]"
       style={{ borderRadius: type === "artist" ? "50%" : "0" }}
     >
       <img

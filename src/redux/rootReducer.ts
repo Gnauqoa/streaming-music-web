@@ -1,5 +1,6 @@
 import { combineReducers } from "redux";
 import userReducer from "./slices/user";
+import likedMusicReducer from "./slices/likedMusic";
 
 // ----------------------------------------------------------------------
 
@@ -29,6 +30,7 @@ const rootPersistConfig = {
 
 const rootReducer = combineReducers({
   user: userReducer,
+  likeMusic: likedMusicReducer,
 });
 
 export { rootPersistConfig, rootReducer };
