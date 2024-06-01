@@ -10,8 +10,10 @@ import { useDispatch, useSelector } from "../../redux/store";
 import PlaylistMiniCard from "../playlist/PlaylistMiniCard";
 import { useEffect } from "react";
 import { getCurrentUserPlaylist } from "../../redux/slices/playlist";
+import useLikedMusicPlaylist from "../../hooks/useLikedMusic";
 
 function Sidebar() {
+  const { playlist } = useLikedMusicPlaylist();
   const { data } = useSelector((state) => state.playlist);
   const dispatch = useDispatch();
   useEffect(() => {
@@ -57,6 +59,7 @@ function Sidebar() {
           </div>
         </div>
         <div className="flex flex-col px-2">
+          <PlaylistMiniCard playlist={playlist} />
           {data.items.map((item) => (
             <PlaylistMiniCard key={item.id} playlist={item} />
           ))}
