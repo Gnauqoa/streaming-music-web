@@ -1,22 +1,40 @@
 import { useEffect } from "react";
-import { Category, useSearchMusic, useSearchPlaylist } from "../hooks/useSearch";
+import {
+  Category,
+  useSearchArtist,
+  useSearchMusic,
+  useSearchPlaylist,
+} from "../hooks/useSearch";
 import PlaylistCard from "../components/playlist/PlaylistCard";
-import { CircularProgress, Typography } from "@mui/material";
+import { CircularProgress, Stack, Typography } from "@mui/material";
 import useLikedMusic from "../hooks/useLikedMusic";
+import ArtistCard from "../components/artist/ArtistCard";
 
 export default function HomePage() {
   const { search, data, loading } = useSearchPlaylist();
-  const { search: searchMusic, data: musics, loading: musicLoading } = useSearchMusic();
+  const {
+    search: searchMusic,
+    data: musics,
+    loading: musicLoading,
+  } = useSearchMusic();
+  const {
+    data: artistData,
+    search: searchArtist,
+    loading: artistLoading,
+  } = useSearchArtist();
 
   const { playlist } = useLikedMusic();
   useEffect(() => {
-    search("", 10, Category.HOT);
+    searchArtist("", 20, Category.HOT);
+    search("", 20, Category.HOT);
   }, []);
   return (
     <div className="page-content">
-      <Typography sx={{ fontSize: 28, color: "#fff" }}>Make for you</Typography>
+      <Typography sx={{ fontSize: 28, color: "#fff", fontWeight: 600 }}>
+        Make for you
+      </Typography>
       <PlaylistCard playlist={playlist} />
-      <Typography sx={{ fontSize: 28, color: "#fff" }}>
+      <Typography sx={{ fontSize: 28, color: "#fff", fontWeight: 600 }}>
         Hot playlists
       </Typography>
       {loading ? (
@@ -27,6 +45,27 @@ export default function HomePage() {
             <PlaylistCard playlist={playlist} key={playlist.id} />
           ))}
         </div>
+      )}
+      <Typography sx={{ fontSize: 28, color: "#fff", fontWeight: 600 }}>
+        Hot Artist
+      </Typography>
+      {artistLoading ? (
+        <CircularProgress />
+      ) : (
+        <Stack
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            gap: 3,
+            width: "100%",
+            overflow: "auto",
+          }}
+          className="hide-scrollbars"
+        >
+          {artistData.items.map((item) => (
+            <ArtistCard artist={item} key={item.id} />
+          ))}
+        </Stack>
       )}
     </div>
   );
