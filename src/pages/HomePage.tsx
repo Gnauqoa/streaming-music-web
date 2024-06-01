@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import {
   Category,
   useSearchArtist,
-  useSearchMusic,
   useSearchPlaylist,
 } from "../hooks/useSearch";
 import PlaylistCard from "../components/playlist/PlaylistCard";
@@ -12,11 +11,7 @@ import ArtistCard from "../components/artist/ArtistCard";
 
 export default function HomePage() {
   const { search, data, loading } = useSearchPlaylist();
-  const {
-    search: searchMusic,
-    data: musics,
-    loading: musicLoading,
-  } = useSearchMusic();
+
   const {
     data: artistData,
     search: searchArtist,
