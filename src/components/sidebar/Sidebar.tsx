@@ -11,8 +11,10 @@ import PlaylistMiniCard from "../playlist/PlaylistMiniCard";
 import { useEffect } from "react";
 import { getCurrentUserPlaylist } from "../../redux/slices/playlist";
 import useLikedMusicPlaylist from "../../hooks/useLikedMusic";
+import { useNavigate } from "react-router-dom";
 
 function Sidebar() {
+  const navigate = useNavigate();
   const { playlist } = useLikedMusicPlaylist();
   const { data } = useSelector((state) => state.playlist);
   const dispatch = useDispatch();
@@ -28,10 +30,13 @@ function Sidebar() {
             width: "150px",
             objectFit: "cover",
             display: "block",
-            padding: "25px 0",
-            margin: "0 auto",
+            margin: "25px auto",
+            cursor: "pointer",
           }}
           alt="Logo"
+          onClick={() => {
+            navigate("/");
+          }}
         />
         <NavList>
           <NavItem to="/" icon={<HomeIcon className="icon" />} label="Home" />
