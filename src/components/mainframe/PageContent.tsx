@@ -31,11 +31,7 @@ export default function PageContent({ query }: { query: string }) {
         <Route path="profile" element={<ProfilePage />} />
         <Route path="/login" element={<LoginPage />} />
 
-        <Route
-          path="/artist/:id"
-          element={<Navigate to="overview" replace />}
-        />
-        <Route path="/artist/:id/*" element={<ArtistPage />} />
+        <Route path="/artist/:id" element={<ArtistPage />} />
       </Routes>
 
       <Tooltip

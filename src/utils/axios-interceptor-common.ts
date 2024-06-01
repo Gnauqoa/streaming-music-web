@@ -19,9 +19,10 @@ const interceptors = {
   ],
   response: [
     async (response: AxiosResponse) => {
-      console.log("config url: ", response.config.url);
-      if ("/api/v1/users/sign_in" === response.config.url || "/api/v1/users" === response.config.url) {
-        console.log("response", response);
+      if (
+        "/api/v1/users/sign_in" === response.config.url ||
+        "/api/v1/users" === response.config.url
+      ) {
         saveToken(response.data?.data?.access_token);
       }
       return response;
@@ -30,8 +31,9 @@ const interceptors = {
   error: [
     (error: AxiosError) => {
       if (error.response?.status === 401) {
-        if (error.response.config.url !== "/api/v1/users/current"){}
-          // window.location.href = pathPage.login;
+        if (error.response.config.url !== "/api/v1/users/current") {
+        }
+        // window.location.href = pathPage.login;
       }
       throw error;
     },

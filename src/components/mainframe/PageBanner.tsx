@@ -1,5 +1,6 @@
 import React from "react";
 import LibraryMusicOutlinedIcon from "@mui/icons-material/LibraryMusicOutlined";
+import { Avatar } from "@mui/material";
 
 export default function PageBanner({
   pageTitle,
@@ -11,12 +12,10 @@ export default function PageBanner({
   const {
     name,
     description,
-    user,
+
     following,
     primary_color,
-    image_url,
-    release_date,
-    total,
+    avatar_url,
   } = bannerInfo;
   let formattedLikes;
 
@@ -31,30 +30,13 @@ export default function PageBanner({
       }}
     >
       <div style={{ display: "flex", alignItems: "center" }}>
-        <div
-          className={`bannerImgDiv ${
-            pageTitle === "profile" || pageTitle === "artist"
-              ? "circleDiv"
-              : null
-          }`}
-        >
-          {image_url ? (
-            <img
-              loading="lazy"
-              src={image_url}
-              className={`bannerImg ${
-                pageTitle === "profile" || pageTitle === "artist"
-                  ? "circleDiv"
-                  : null
-              }`}
-              alt=""
-            />
-          ) : (
-            <div className="svgSizing">
-              <LibraryMusicOutlinedIcon className="icon" />
-            </div>
-          )}
-        </div>
+        {avatar_url ? (
+          <Avatar sx={{ width: 250, height: 250 }} src={avatar_url} alt="" />
+        ) : (
+          <div className="svgSizing">
+            <LibraryMusicOutlinedIcon className="icon" />
+          </div>
+        )}
 
         <div className="bannerInfo">
           <h2 className="pageTitle">{pageTitle}</h2>
@@ -69,58 +51,12 @@ export default function PageBanner({
           >
             {description}
           </p>
-          <div className="additionalInfo">
-            {user &&
-              user[0] &&
-              user.map(
-                (
-                  person: {
-                    type: string;
-                    id: string;
-                    name: string;
-                    display_name: string;
-                  },
-                  index: number
-                ) => (
-                  <a key={index} href={`/${person.type}/${person.id}`}>
-                    {person.type === "artist"
-                      ? person.name
-                      : person.display_name}
-                  </a>
-                )
-              )}
-            {total !== 0 && total && <h2>{total} Playlists</h2>}
-            {following !== 0 && (
-              <h2 style={pageTitle === "artist" ? followerStyle : undefined}>
-                {formattedLikes} {followerTitle(pageTitle)}
-              </h2>
-            )}
-            {release_date && <h2>{release_date}</h2>}
-          </div>
         </div>
       </div>
       <div className="bannerOverlay"></div>
     </div>
   );
 }
-
-function followerTitle(title: string) {
-  switch (title) {
-    case "profile":
-      return "Following";
-    case "artist":
-      return "monthly listeners";
-    default:
-      return "Likes";
-  }
-}
-
-const followerStyle: React.CSSProperties = {
-  fontSize: "16px",
-  lineHeight: "2",
-  marginTop: "4px",
-  color: "#fff",
-};
 
 const spanStyle: React.CSSProperties = {
   display: "-webkit-box",
