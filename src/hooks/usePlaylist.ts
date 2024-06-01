@@ -1,4 +1,8 @@
-import { dislikePlaylistAPI, getPlaylistAPI } from "./../apis/playlist";
+import {
+  dislikePlaylistAPI,
+  getPlaylistAPI,
+  updatePlaylistAPI,
+} from "./../apis/playlist";
 import { useNavigate } from "react-router-dom";
 import { createPlaylistAPI, likePlaylistAPI } from "../apis/playlist";
 import { useState } from "react";
@@ -16,6 +20,19 @@ const usePlaylist = () => {
   const { toggle: loading, onOpen: onLoading, onClose: onLoaded } = useToggle();
   const disableAPI = loading || fullLoading;
   const navigate = useNavigate();
+  const updatePlaylist = async (payload: any) => {
+    try {
+      if (!playlist) return;
+      onLoading();
+      const res = await updatePlaylistAPI({ id: playlist?.id, payload });
+      onLoaded();
+      setPlaylist(res.data.data);
+      toast.success("Playlist updated successfully");
+    } catch (error) {
+      onLoaded();
+      toast.error("Failed to update playlist");
+    }
+  };
   const createPlaylist = async () => {
     try {
       onLoading();
@@ -55,6 +72,7 @@ const usePlaylist = () => {
     createPlaylist,
     likePlaylist,
     dislikePlaylist,
+    updatePlaylist,
     playlist,
     loading,
     fullLoading,

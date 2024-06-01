@@ -24,10 +24,10 @@ export default function PlayListPage() {
     getPlaylist,
     likePlaylist,
     dislikePlaylist,
+    updatePlaylist,
   } = usePlaylist();
   const { onStartPlaylist, isPlaying, currentPlaylistId, onTogglePlay } =
     useAudioControl();
-
   const { playlist: likedPlaylist, isLoading } = useLikedMusicPlaylist();
   const playlist = Number(params.id) !== -1 ? playlistData : likedPlaylist;
 
@@ -47,6 +47,7 @@ export default function PlayListPage() {
     <div className="flex flex-col w-full h-full">
       <PageBanner
         pageTitle="playlist"
+        updatePlaylist={updatePlaylist}
         bannerInfo={{
           name: playlist.name,
           description: playlist.description,
@@ -85,7 +86,7 @@ export default function PlayListPage() {
                   <PlayArrow sx={{ color: "#000" }} />
                 )}
               </IconButton>
-              {(playlist.id !== -1 && playlist?.user?.id !== user?.id) && (
+              {playlist.id !== -1 && playlist?.user?.id !== user?.id && (
                 <IconButton
                   onClick={() =>
                     playlist.liked ? dislikePlaylist() : likePlaylist()

@@ -14,7 +14,7 @@ export const updatePlaylistAPI = ({
   payload,
 }: {
   id: number | string;
-  payload: { name: string; description: string };
+  payload: { name: string; description?: string };
 }): Promise<AxiosResponse<{ data: Playlist }>> => {
   return axios.put(`/api/v1/playlists/${id}`, payload);
 };

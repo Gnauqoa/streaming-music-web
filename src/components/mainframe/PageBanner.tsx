@@ -1,25 +1,21 @@
 import React from "react";
 import LibraryMusicOutlinedIcon from "@mui/icons-material/LibraryMusicOutlined";
-import { Avatar } from "@mui/material";
+import { Avatar, IconButton } from "@mui/material";
+import EditIcon from "@mui/icons-material/Edit";
+import useToggle from "../../hooks/useToggle";
+import EditPlaylistModal from "../playlist/EditPlayListModal";
 
 export default function PageBanner({
   pageTitle,
   bannerInfo,
+  updatePlaylist,
 }: {
+  updatePlaylist?: (payload: any) => void;
   pageTitle: string;
   bannerInfo: any;
 }) {
-  const {
-    name,
-    description,
-
-    following,
-    primary_color,
-    avatar_url,
-  } = bannerInfo;
-  let formattedLikes;
-
-  if (following) formattedLikes = following.total.toLocaleString("en-US");
+  const { name, description, primary_color, avatar_url } = bannerInfo;
+  const { toggle, onOpen, onClose } = useToggle();
 
   return (
     <div
@@ -29,7 +25,7 @@ export default function PageBanner({
         height: pageTitle === "artist" ? "40vh" : "30vh",
       }}
     >
-      <div style={{ display: "flex", alignItems: "center" }}>
+      <div className="flex flex-col w-full relative">
         {avatar_url ? (
           <Avatar sx={{ width: 250, height: 250 }} src={avatar_url} alt="" />
         ) : (
@@ -38,6 +34,24 @@ export default function PageBanner({
           </div>
         )}
 
+        <IconButton
+          onClick={onOpen}
+          sx={{
+            position: "absolute",
+            top: 50,
+            right: 50,
+            zIndex: 20,
+            backgroundColor: "primary.main",
+            color: "#fff",
+          }}
+        >
+          <EditIcon />
+        </IconButton>
+        <EditPlaylistModal
+          open={toggle}
+          onClose={onClose}
+          updatePlaylist={updatePlaylist}
+        />
         <div className="bannerInfo">
           <h2 className="pageTitle">{pageTitle}</h2>
           <span style={spanStyle}>
