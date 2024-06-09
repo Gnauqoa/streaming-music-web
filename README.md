@@ -40,4 +40,6 @@ Ensure you have the following software installed:
    ```sh
    git clone https://github.com/yourusername/streaming-music-web.git
    cd streaming-music-web
-```sh
+   ```
+2. **Install package
+   
