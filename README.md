@@ -2,6 +2,8 @@
 
 This project is a web application frontend for streaming music, built using React, React Router DOM, TailwindCSS, and Material UI. The app provides users with a seamless music streaming experience with modern and responsive design elements.
 
+- [BE repo](https://github.com/Gnauqoa/streaming-music-be)
+
 ## Table of Contents
 
 - [Features](#features)
