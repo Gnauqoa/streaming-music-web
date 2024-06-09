@@ -9,9 +9,6 @@ This project is a web application frontend for streaming music, built using Reac
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
 - [Running the Application](#running-the-application)
-- [Project Structure](#project-structure)
-- [Dependencies](#dependencies)
-- [Contributing](#contributing)
 - [License](#license)
 
 ## Features
@@ -50,4 +47,17 @@ Ensure you have the following software installed:
    npm install
    ```
 3. **Config env
-- REACT_APP_API_SERVER_URL: BACK END URL
+- `REACT_APP_API_SERVER_URL`: BACK END URL
+
+## Running the Application
+   ```sh
+   npm start
+   ```
+   or
+   ```sh
+   yarn start
+   ```
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
