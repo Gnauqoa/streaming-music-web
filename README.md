@@ -42,4 +42,12 @@ Ensure you have the following software installed:
    cd streaming-music-web
    ```
 2. **Install package
-   
+   ```sh
+   yarn install
+   ```
+   or
+   ```sh
+   npm install
+   ```
+3. **Config env
+- REACT_APP_API_SERVER_URL: BACK END URL
